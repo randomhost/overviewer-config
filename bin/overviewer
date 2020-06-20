@@ -1,0 +1,80 @@
+#!/bin/bash
+
+# init vars
+pid="$$"
+niceness=19
+overviewerPath="/usr/bin/overviewer.py"
+pidfile="/home/minecraft/overviewer.pid"
+configfile="/home/minecraft/config/overviewer/main.py"
+poionly=false
+force=''
+check='--check-tiles'
+
+print_usage_hint() {
+    cat <<EOF >&2
+Usage: $(basename $0) [-h -p -f]
+
+Description:
+    Updates the Minecraft Overviewer map.
+
+Options:
+    -h Show this help.
+    -p Only updates POIs without rendering tiles.
+    -f Force re-rendering of all tiles.
+EOF
+}
+
+run() {
+    while getopts :hpf OPT; do
+        case ${OPT} in
+            h)
+                print_usage_hint
+                exit 0
+                ;;
+            p)
+                poionly=true
+                ;;
+            f)
+                check=''
+                force='--forcerender'
+                ;;
+            \?)
+                echo -e "Invalid option: -$OPTARG\n" >&2
+                print_usage_hint
+                exit 1
+                ;;
+            :)
+                echo -e "Option -$OPTARG requires an argument.\n" >&2
+                print_usage_hint
+                exit 1
+                ;;
+        esac
+    done
+
+    while [[ 1 -lt "$OPTIND" ]]; do
+        shift
+        OPTIND="`expr \"$OPTIND\" - 1`"
+    done
+
+    if [[ -f ${pidfile} ]]; then
+        echo -e "$(date)\nOverviewer is still running \n
+        $( echo PID: $(cat ${pidfile})) exists from previous run\n
+        $(ps -p $(cat ${pidfile}) -o lstart,etime)\n" >&2
+        exit 1
+    else
+        echo ${pid} > ${pidfile}
+
+        if [[ "${poionly}" = false ]]; then
+            nice -n ${niceness} ${overviewerPath} --config="${configfile}" ${check} ${force}
+        fi
+
+        nice -n ${niceness} ${overviewerPath} --config="${configfile}" --genpoi
+
+        rm ${pidfile}
+    fi
+}
+
+run "$@"
+
+
+
