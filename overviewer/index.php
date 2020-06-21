@@ -103,11 +103,6 @@ $update = filemtime('index.html');
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="stats-general" role="tabpanel" aria-labelledby="stats-general-tab">
-                        <div class="alert alert-info mt-2">
-                            <i class="da da-info-circle" aria-hidden="true"></i>
-                            Diese Ansicht befindet sich noch in Entwicklung. Einige Werte sind daher
-                            noch nicht gut lesbar.
-                        </div>
                         <table class="table table-sm table-striped">
                             <thead></thead>
                             <tbody>

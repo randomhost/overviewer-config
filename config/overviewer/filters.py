@@ -7,19 +7,23 @@
 import sys
 sys.path.append('/home/minecraft/config/overviewer/')
 
-global json
-global os
 global html
-import json
-import os
+global json
+global locale
+global os
+global statsCache
+import datetime
 import html
+import json
+import locale
 import logging
-
-from collections import OrderedDict
+import os
 
 ####################################################################################################
-# Load translations
+# Load Translations
 ####################################################################################################
+
+locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')
 
 translationFilePath= '/home/minecraft/config/overviewer/de_de.json'
 logging.info('Loading translations from \'%s\'', translationFilePath)
@@ -31,9 +35,10 @@ else:
     decodedTranslations={}
 
 ####################################################################################################
-# Helpers
+# Load and cache Player Statistics
 ####################################################################################################
 
+# Initialize Item Stats Item
 def initItem(stats, key, name):
     if(key not in stats['items']['items']):
         stats['items']['items'][key] = {
@@ -48,6 +53,7 @@ def initItem(stats, key, name):
             }
         }
 
+# Initialize Mob Stats Item
 def initMob(stats, key, name):
     if(key not in stats['mobs']['mobs']):
         stats['mobs']['mobs'][key] = {
@@ -58,6 +64,283 @@ def initMob(stats, key, name):
             }
         }
 
+# Format Distance
+def formatDistance(value):
+    if(value < 100):
+        return formatFloatAsString(value) + ' cm'
+
+    if(value < 100000):
+        value = round(value/100, 2)
+        return formatFloatAsString(value) + ' m'
+
+    value = round(value/100000, 2)
+    return formatFloatAsString(value) + ' km'
+
+# Format Time
+def formatTime(value):
+    time = str(datetime.timedelta(seconds=value))
+    time = time.replace('days', 'Tage')
+    time = time.replace('day', 'Tag')
+
+    return time
+
+# Format Time ago
+def formatTimeAgo(value):
+    timeAgo = str(datetime.timedelta(seconds=value))
+    timeAgo = timeAgo.replace('days', 'Tagen')
+    timeAgo = timeAgo.replace('day', 'Tag')
+
+    return 'vor ' + timeAgo
+
+# Format Float
+def formatFloat(value):
+    return formatFloatAsString(value / 10)
+
+# Format Float String
+def formatFloatAsString(value):
+    return locale.format('%.2f', value, True)
+
+# Format Int String
+def formatIntAsString(value):
+    return locale.format('%.0f', value, True)
+
+# Format General Statistics
+def formatGeneralStats(key, value):
+    formatMappings = {
+        # Distance
+        'minecraft:aviate_one_cm': formatDistance,
+        'minecraft:boat_one_cm': formatDistance,
+        'minecraft:climb_one_cm': formatDistance,
+        'minecraft:crouch_one_cm': formatDistance,
+        'minecraft:fall_one_cm': formatDistance,
+        'minecraft:fly_one_cm': formatDistance,
+        'minecraft:horse_one_cm': formatDistance,
+        'minecraft:minecart_one_cm': formatDistance,
+        'minecraft:pig_one_cm': formatDistance,
+        'minecraft:sprint_one_cm': formatDistance,
+        'minecraft:swim_one_cm': formatDistance,
+        'minecraft:walk_on_water_one_cm': formatDistance,
+        'minecraft:walk_one_cm': formatDistance,
+        'minecraft:walk_under_water_one_cm': formatDistance,
+
+        # Time
+        'minecraft:play_one_minute': formatTime,
+        'minecraft:sneak_time': formatTime,
+
+        # Time ago
+        'minecraft:time_since_death': formatTimeAgo,
+        'minecraft:time_since_rest': formatTimeAgo,
+
+        # Float
+        'minecraft:damage_absorbed': formatFloat,
+        'minecraft:damage_blocked_by_shield': formatFloat,
+        'minecraft:damage_dealt': formatFloat,
+        'minecraft:damage_dealt_absorbed': formatFloat,
+        'minecraft:damage_dealt_resisted': formatFloat,
+        'minecraft:damage_resisted': formatFloat,
+        'minecraft:damage_taken': formatFloat,
+
+        # Integer
+        #'minecraft:animals_bred':,
+        #'minecraft:bell_ring':,
+        #'minecraft:clean_armor':,
+        #'minecraft:clean_banner':,
+        #'minecraft:clean_shulker_box':,
+        #'minecraft:deaths':,
+        #'minecraft:drop':,
+        #'minecraft:eat_cake_slice':,
+        #'minecraft:enchant_item':,
+        #'minecraft:fill_cauldron':,
+        #'minecraft:fish_caught':,
+        #'minecraft:inspect_dispenser':,
+        #'minecraft:inspect_dropper':,
+        #'minecraft:inspect_hopper':,
+        #'minecraft:interact_with_beacon':,
+        #'minecraft:interact_with_blast_furnace':,
+        #'minecraft:interact_with_brewingstand':,
+        #'minecraft:interact_with_campfire':,
+        #'minecraft:interact_with_cartography_table':,
+        #'minecraft:interact_with_crafting_table':,
+        #'minecraft:interact_with_furnace':,
+        #'minecraft:interact_with_lectern':,
+        #'minecraft:interact_with_loom':,
+        #'minecraft:interact_with_smoker':,
+        #'minecraft:interact_with_stonecutter':,
+        #'minecraft:jump':,
+        #'minecraft:junk_fished':,
+        #'minecraft:leave_game':,
+        #'minecraft:mob_kills':,
+        #'minecraft:open_barrel':,
+        #'minecraft:open_chest':,
+        #'minecraft:open_enderchest':,
+        #'minecraft:open_shulker_box':,
+        #'minecraft:play_noteblock':,
+        #'minecraft:play_record':,
+        #'minecraft:player_kills':,
+        #'minecraft:pot_flower':,
+        #'minecraft:raid_trigger':,
+        #'minecraft:raid_win':,
+        #'minecraft:ring_bell':,
+        #'minecraft:sleep_in_bed':,
+        #'minecraft:talked_to_villager':,
+        #'minecraft:traded_with_villager':,
+        #'minecraft:treasure_fished':,
+        #'minecraft:trigger_trapped_chest':,
+        #'minecraft:tune_noteblock':,
+        #'minecraft:use_cauldron':,
+    }
+
+    func = formatMappings.get(key, lambda value: formatIntAsString(value))
+
+    return func(value)
+
+statsCache = {}
+def loadPlayerStats(poi):
+    if(poi['uuid'] in statsCache):
+        return statsCache[poi['uuid']]
+
+    # load player stats
+    statsFilePath= '/home/minecraft/vanilla/worldstorage/randomhost/stats/%s.json' % poi['uuid']
+    logging.info('Loading player stats for \'%s\' from \'%s\'', poi['EntityId'], statsFilePath)
+    if os.path.isfile(statsFilePath):
+        with open(statsFilePath, 'r') as statsFile:
+            decodedStats = json.load(statsFile)
+            if 'stats' in decodedStats:
+                # build dictionary structure
+                stats = {
+                    'general': {
+                        'name': decodedTranslations['stat.generalButton'],
+                        'actions': {}
+                    },
+                    'items': {
+                        'name': decodedTranslations['stat.itemsButton'],
+                        'actions': {
+                            'mined': decodedTranslations['stat_type.minecraft.mined'],
+                            'broken': decodedTranslations['stat_type.minecraft.broken'],
+                            'crafted': decodedTranslations['stat_type.minecraft.crafted'],
+                            'used': decodedTranslations['stat_type.minecraft.used'],
+                            'picked_up': decodedTranslations['stat_type.minecraft.picked_up'],
+                            'dropped': decodedTranslations['stat_type.minecraft.dropped']
+                        },
+                        'items': {}
+                    },
+                    'mobs': {
+                        'name': decodedTranslations['stat.mobsButton'],
+                        'actions': {
+                            'killed': 'Getötet',
+                            'killed_by': 'Getötet von'
+                        },
+                        'mobs': {}
+                    }
+                }
+
+                # general stats
+                if 'minecraft:custom' in decodedStats['stats']:
+                    for key in decodedStats['stats']['minecraft:custom']:
+                        translationKey='stat.' + key.replace(':', '.')
+                        translation=decodedTranslations[translationKey]
+
+                        stats['general']['actions'][translationKey] = {
+                            'name': translation,
+                            'value': formatGeneralStats(key, decodedStats['stats']['minecraft:custom'][key])
+                        }
+
+                # item stats: mined
+                if 'minecraft:mined' in decodedStats['stats']:
+                    for key in decodedStats['stats']['minecraft:mined']:
+                        translationKey='block.' + key.replace(':', '.')
+                        translation=decodedTranslations[translationKey]
+                        initItem(stats, key, translation)
+
+                        stats['items']['items'][key]['actions']['mined'] = decodedStats['stats']['minecraft:mined'][key]
+
+                # item stats: broken
+                if 'minecraft:broken' in decodedStats['stats']:
+                    for key in decodedStats['stats']['minecraft:broken']:
+                        translationKey='item.' + key.replace(':', '.')
+                        translation=decodedTranslations[translationKey]
+                        initItem(stats, key, translation)
+
+                        stats['items']['items'][key]['actions']['broken'] = decodedStats['stats']['minecraft:broken'][key]
+
+                # item stats: crafted
+                if 'minecraft:crafted' in decodedStats['stats']:
+                    for key in decodedStats['stats']['minecraft:crafted']:
+                        try:
+                            translationKey='block.' + key.replace(':', '.')
+                            translation=decodedTranslations[translationKey]
+                        except KeyError:
+                            translationKey='item.' + key.replace(':', '.')
+                            translation=decodedTranslations[translationKey]
+                        initItem(stats, key, translation)
+
+                        stats['items']['items'][key]['actions']['crafted'] = decodedStats['stats']['minecraft:crafted'][key]
+
+                # item stats: used
+                if 'minecraft:used' in decodedStats['stats']:
+                    for key in decodedStats['stats']['minecraft:used']:
+                        try:
+                            translationKey='block.' + key.replace(':', '.')
+                            translation=decodedTranslations[translationKey]
+                        except KeyError:
+                            translationKey='item.' + key.replace(':', '.')
+                            translation=decodedTranslations[translationKey]
+                        initItem(stats, key, translation)
+
+                        stats['items']['items'][key]['actions']['used'] = decodedStats['stats']['minecraft:used'][key]
+
+                # item stats: picked up
+                if 'minecraft:picked_up' in decodedStats['stats']:
+                    for key in decodedStats['stats']['minecraft:picked_up']:
+                        try:
+                            translationKey='block.' + key.replace(':', '.')
+                            translation=decodedTranslations[translationKey]
+                        except KeyError:
+                            translationKey='item.' + key.replace(':', '.')
+                            translation=decodedTranslations[translationKey]
+                        initItem(stats, key, translation)
+
+                        stats['items']['items'][key]['actions']['picked_up'] = decodedStats['stats']['minecraft:picked_up'][key]
+
+                # item stats: dropped
+                if 'minecraft:dropped' in decodedStats['stats']:
+                    for key in decodedStats['stats']['minecraft:dropped']:
+                        try:
+                            translationKey='block.' + key.replace(':', '.')
+                            translation=decodedTranslations[translationKey]
+                        except KeyError:
+                            translationKey='item.' + key.replace(':', '.')
+                            translation=decodedTranslations[translationKey]
+                        initItem(stats, key, translation)
+
+                        stats['items']['items'][key]['actions']['dropped'] = decodedStats['stats']['minecraft:dropped'][key]
+
+                # mob stats: killed
+                if 'minecraft:killed' in decodedStats['stats']:
+                    for key in decodedStats['stats']['minecraft:killed']:
+                        translationKey='entity.' + key.replace(':', '.')
+                        translation=decodedTranslations[translationKey]
+                        initMob(stats, key, translation)
+
+                        stats['mobs']['mobs'][key]['actions']['killed'] = decodedStats['stats']['minecraft:killed'][key]
+
+                # mob stats: killed by
+                if 'minecraft:killed_by' in decodedStats['stats']:
+                    for key in decodedStats['stats']['minecraft:killed_by']:
+                        translationKey='entity.' + key.replace(':', '.')
+                        translation=decodedTranslations[translationKey]
+                        initMob(stats, key, translation)
+
+                        stats['mobs']['mobs'][key]['actions']['killed_by'] = decodedStats['stats']['minecraft:killed_by'][key]
+            else:
+                stats={}
+    else:
+        stats={}
+
+    statsCache[poi['uuid']] = stats
+
+    return stats
+
 ####################################################################################################
 # Filters
 ####################################################################################################
@@ -67,142 +350,7 @@ def playerFilter(poi):
         poi['icon'] = 'https://overviewer.org/avatar/%s' % poi['EntityId']
         tooltipIcon = 'https://overviewer.org/avatar/%s/head' % poi['EntityId']
 
-        # load player stats
-        statsFilePath= '/home/minecraft/vanilla/worldstorage/randomhost/stats/%s.json' % poi['uuid']
-        if os.path.isfile(statsFilePath):
-            with open(statsFilePath, 'r') as statsFile:
-                decodedStats = json.load(statsFile)
-                if 'stats' in decodedStats:
-                    # build dictionary structure
-                    stats = {
-                        'general': {
-                            'name': decodedTranslations['stat.generalButton'],
-                            'actions': {}
-                        },
-                        'items': {
-                            'name': decodedTranslations['stat.itemsButton'],
-                            'actions': {
-                                'mined': decodedTranslations['stat_type.minecraft.mined'],
-                                'broken': decodedTranslations['stat_type.minecraft.broken'],
-                                'crafted': decodedTranslations['stat_type.minecraft.crafted'],
-                                'used': decodedTranslations['stat_type.minecraft.used'],
-                                'picked_up': decodedTranslations['stat_type.minecraft.picked_up'],
-                                'dropped': decodedTranslations['stat_type.minecraft.dropped']
-                            },
-                            'items': {}
-                        },
-                        'mobs': {
-                            'name': decodedTranslations['stat.mobsButton'],
-                            'actions': {
-                                'killed': 'Getötet',
-                                'killed_by': 'Getötet von'
-                            },
-                            'mobs': {}
-                        }
-                    }
-
-                    # general stats
-                    if 'minecraft:custom' in decodedStats['stats']:
-                        for key in decodedStats['stats']['minecraft:custom']:
-                            translationKey='stat.' + key.replace(':', '.')
-                            translation=decodedTranslations[translationKey]
-
-                            stats['general']['actions'][translationKey] = {
-                                'name': translation,
-                                'value': decodedStats['stats']['minecraft:custom'][key]
-                            }
-
-                    # item stats: mined
-                    if 'minecraft:mined' in decodedStats['stats']:
-                        for key in decodedStats['stats']['minecraft:mined']:
-                            translationKey='block.' + key.replace(':', '.')
-                            translation=decodedTranslations[translationKey]
-                            initItem(stats, key, translation)
-
-                            stats['items']['items'][key]['actions']['mined'] = decodedStats['stats']['minecraft:mined'][key]
-
-                    # item stats: broken
-                    if 'minecraft:broken' in decodedStats['stats']:
-                        for key in decodedStats['stats']['minecraft:broken']:
-                            translationKey='item.' + key.replace(':', '.')
-                            translation=decodedTranslations[translationKey]
-                            initItem(stats, key, translation)
-
-                            stats['items']['items'][key]['actions']['broken'] = decodedStats['stats']['minecraft:broken'][key]
-
-                    # item stats: crafted
-                    if 'minecraft:crafted' in decodedStats['stats']:
-                        for key in decodedStats['stats']['minecraft:crafted']:
-                            try:
-                                translationKey='block.' + key.replace(':', '.')
-                                translation=decodedTranslations[translationKey]
-                            except KeyError:
-                                translationKey='item.' + key.replace(':', '.')
-                                translation=decodedTranslations[translationKey]
-                            initItem(stats, key, translation)
-
-                            stats['items']['items'][key]['actions']['crafted'] = decodedStats['stats']['minecraft:crafted'][key]
-
-                    # item stats: used
-                    if 'minecraft:used' in decodedStats['stats']:
-                        for key in decodedStats['stats']['minecraft:used']:
-                            try:
-                                translationKey='block.' + key.replace(':', '.')
-                                translation=decodedTranslations[translationKey]
-                            except KeyError:
-                                translationKey='item.' + key.replace(':', '.')
-                                translation=decodedTranslations[translationKey]
-                            initItem(stats, key, translation)
-
-                            stats['items']['items'][key]['actions']['used'] = decodedStats['stats']['minecraft:used'][key]
-
-                    # item stats: picked up
-                    if 'minecraft:picked_up' in decodedStats['stats']:
-                        for key in decodedStats['stats']['minecraft:picked_up']:
-                            try:
-                                translationKey='block.' + key.replace(':', '.')
-                                translation=decodedTranslations[translationKey]
-                            except KeyError:
-                                translationKey='item.' + key.replace(':', '.')
-                                translation=decodedTranslations[translationKey]
-                            initItem(stats, key, translation)
-
-                            stats['items']['items'][key]['actions']['picked_up'] = decodedStats['stats']['minecraft:picked_up'][key]
-
-                    # item stats: dropped
-                    if 'minecraft:dropped' in decodedStats['stats']:
-                        for key in decodedStats['stats']['minecraft:dropped']:
-                            try:
-                                translationKey='block.' + key.replace(':', '.')
-                                translation=decodedTranslations[translationKey]
-                            except KeyError:
-                                translationKey='item.' + key.replace(':', '.')
-                                translation=decodedTranslations[translationKey]
-                            initItem(stats, key, translation)
-
-                            stats['items']['items'][key]['actions']['dropped'] = decodedStats['stats']['minecraft:dropped'][key]
-
-                    # mob stats: killed
-                    if 'minecraft:killed' in decodedStats['stats']:
-                        for key in decodedStats['stats']['minecraft:killed']:
-                            translationKey='entity.' + key.replace(':', '.')
-                            translation=decodedTranslations[translationKey]
-                            initMob(stats, key, translation)
-
-                            stats['mobs']['mobs'][key]['actions']['killed'] = decodedStats['stats']['minecraft:killed'][key]
-
-                    # mob stats: killed by
-                    if 'minecraft:killed_by' in decodedStats['stats']:
-                        for key in decodedStats['stats']['minecraft:killed_by']:
-                            translationKey='entity.' + key.replace(':', '.')
-                            translation=decodedTranslations[translationKey]
-                            initMob(stats, key, translation)
-
-                            stats['mobs']['mobs'][key]['actions']['killed_by'] = decodedStats['stats']['minecraft:killed_by'][key]
-                else:
-                    stats={}
-        else:
-            stats={}
+        stats=loadPlayerStats(poi)
 
         titleHtml='<strong class="title"><img src="{icon}" width="16" alt="" /> {player}</strong>' \
         .format(icon=tooltipIcon,player=poi['EntityId'])
