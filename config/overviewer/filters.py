@@ -13,8 +13,22 @@ global html
 import json
 import os
 import html
+import logging
 
 from collections import OrderedDict
+
+####################################################################################################
+# Load translations
+####################################################################################################
+
+translationFilePath= '/home/minecraft/config/overviewer/de_de.json'
+logging.info('Loading translations from \'%s\'', translationFilePath)
+if os.path.isfile(translationFilePath):
+    with open(translationFilePath, 'r') as translationFile:
+        decodedTranslations = json.load(translationFile)
+else:
+    logging.warning('Failed to load translations from \'%s\'', translationFilePath)
+    decodedTranslations={}
 
 ####################################################################################################
 # Helpers
@@ -52,14 +66,6 @@ def playerFilter(poi):
     if poi['id'] == 'Player':
         poi['icon'] = 'https://overviewer.org/avatar/%s' % poi['EntityId']
         tooltipIcon = 'https://overviewer.org/avatar/%s/head' % poi['EntityId']
-
-        # load translations
-        translationFilePath= './de_de.json'
-        if os.path.isfile(translationFilePath):
-            with open(translationFilePath, 'r') as translationFile:
-                decodedTranslations = json.load(translationFile)
-        else:
-            decodedTranslations={}
 
         # load player stats
         statsFilePath= '/home/minecraft/vanilla/worldstorage/randomhost/stats/%s.json' % poi['uuid']
