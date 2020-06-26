@@ -195,12 +195,12 @@ def formatGeneralStats(key, value):
     return func(value)
 
 statsCache = {}
-def loadPlayerStats(poi):
+def loadPlayerStats(poi, worldPath):
     if(poi['uuid'] in statsCache):
         return statsCache[poi['uuid']]
 
     # load player stats
-    statsFilePath= '/home/minecraft/vanilla/worldstorage/randomhost/stats/%s.json' % poi['uuid']
+    statsFilePath= worldPath + '/stats/%s.json' % poi['uuid']
     logging.info('Loading player stats for \'%s\' from \'%s\'', poi['EntityId'], statsFilePath)
     if os.path.isfile(statsFilePath):
         with open(statsFilePath, 'r') as statsFile:
@@ -354,14 +354,14 @@ def loadPlayerStats(poi):
 # Filters
 ####################################################################################################
 
-def playerFilter(poi):
+def playerFilter(worldPath, poi):
     if poi['id'] == 'Player':
         #poi['icon'] = 'https://overviewer.org/avatar/%s' % poi['EntityId']
         #tooltipIcon = 'https://overviewer.org/avatar/%s/head' % poi['EntityId']
         poi['icon'] = 'https://random-host.tv/games/minecraft/overviewer/avatar/%s/body' % poi['EntityId']
         tooltipIcon = 'https://random-host.tv/games/minecraft/overviewer/avatar/%s/head' % poi['EntityId']
 
-        stats=loadPlayerStats(poi)
+        stats=loadPlayerStats(poi, worldPath)
 
         titleHtml='<strong class="title"><img src="{icon}" width="16" alt="" /> {player}</strong>' \
         .format(icon=tooltipIcon,player=poi['EntityId'])
