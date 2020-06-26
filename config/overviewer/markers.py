@@ -21,12 +21,6 @@ markers = [
         checked=False
     ),
     dict(
-        name='Spieler',
-        filterFunction=playerFilter,
-        icon='icons/marker_comment.png',
-        checked=False
-    ),
-    dict(
         name='Parks & Öffentliche Plätze',
         filterFunction=filterBuilder('Park', 'Parks & Öffentliche Plätze'),
         icon='icons/marker_park.png',
