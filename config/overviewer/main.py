@@ -6,6 +6,7 @@
 
 import sys
 sys.path.append('/home/minecraft/config/overviewer/')
+from .observer import JSObserver
 
 ####################################################################################################
 # General Options
@@ -67,20 +68,34 @@ renders['randomhost_cave'] = {
 renders['ramdomhost_spawnoverlay'] = {
     'world': 'Random World',
     'rendermode': [ClearBase(), SpawnOverlay()],
-    'title': "Monster-Spawn",
+    'title': 'Monster-Spawn',
     'overlay': ['randomhost_day','randomhost_night']
 }
 
 renders['ramdomhost_biomeoverlay'] = {
     'world': 'Random World',
     'rendermode': [ClearBase(), BiomeOverlay()],
-    'title': "Biome",
+    'title': 'Biome',
     'overlay': ['randomhost_day','randomhost_night']
 }
 
 renders['ramdomhost_depthoverlay'] = {
     'world': 'Random World',
     'rendermode': [Base(), EdgeLines(), Cave(only_lit=True), DepthTinting()],
-    'title': "Tiefe",
+    'title': 'Tiefe',
     'overlay': ['randomhost_cave']
 }
+
+####################################################################################################
+# Observers
+####################################################################################################
+
+observer = JSObserver(
+    outputdir,
+    5,
+    dict(
+        totalTiles='Rendere %d Kacheln',
+        renderCompleted='Vorgang abgeschlossen. Dauer: %02d:%02d:%02d',
+        renderProgress='%d von %d Kacheln gerendert (%d%%, ETA: %s)'
+    )
+)

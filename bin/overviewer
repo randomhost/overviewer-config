@@ -64,11 +64,11 @@ run() {
     else
         echo ${pid} > ${pidfile}
 
+        nice -n ${niceness} ${overviewerPath} --config="${configfile}" --genpoi
+
         if [[ "${poionly}" = false ]]; then
             nice -n ${niceness} ${overviewerPath} --config="${configfile}" ${check} ${force}
         fi
-
-        nice -n ${niceness} ${overviewerPath} --config="${configfile}" --genpoi
 
         rm ${pidfile}
     fi
