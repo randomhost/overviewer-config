@@ -1,4 +1,16 @@
 $(document).ready(function () {
+
+    // Sort stats by key
+    function sortStats(unordered)
+    {
+        const ordered = {};
+        Object.keys(unordered).sort().forEach(function (key) {
+            ordered[key] = unordered[key];
+        });
+
+        return ordered;
+    }
+
     // Screenshot Modal
     $('#screenshotModal').on('show.bs.modal', function (event) {
         let link = $(event.relatedTarget);
@@ -34,7 +46,7 @@ $(document).ready(function () {
         modal.find('#stats-general table thead').html(generalHeader);
 
         let generalBody = '';
-        for (let stat in stats['general']['actions']) {
+        for (let stat in sortStats(stats['general']['actions'])) {
             if (stats['general']['actions'].hasOwnProperty(stat)) {
                 generalBody += '<tr>';
                 generalBody += '<td>' + stats['general']['actions'][stat]['name'] + '</td>';
@@ -58,7 +70,7 @@ $(document).ready(function () {
         modal.find('#stats-items table thead').html(itemsHeader);
 
         let itemsBody = '';
-        for (let item in stats['items']['items']) {
+        for (let item in sortStats(stats['items']['items'])) {
             if (stats['items']['items'].hasOwnProperty(item)) {
                 itemsBody += '<tr>';
                 itemsBody += '<td>' + stats['items']['items'][item]['name'] + '</td>';
@@ -83,7 +95,7 @@ $(document).ready(function () {
         modal.find('#stats-mobs table thead').html(mobsHeader);
 
         let mobsBody = '';
-        for (let mob in stats['mobs']['mobs']) {
+        for (let mob in sortStats(stats['mobs']['mobs'])) {
             if (stats['mobs']['mobs'].hasOwnProperty(mob)) {
                 mobsBody += '<tr>';
                 mobsBody += '<td>' + stats['mobs']['mobs'][mob]['name'] + '</td>';

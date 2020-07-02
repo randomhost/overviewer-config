@@ -157,7 +157,7 @@ $update = filemtime('index.html');
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="js/custom.min.js"></script>
 
 <script type="text/javascript" src="overviewerConfig.js"></script>
 <script type="text/javascript" src="overviewer.js"></script>
