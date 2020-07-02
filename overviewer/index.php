@@ -36,6 +36,11 @@ $update = filemtime('index.html');
     <strong>Mist!</strong> Beim Laden der Karte ist etwas schief gelaufen.
 </div>
 
+<a class="btn btn-dark" id="refresh-button" href="javascript:location.reload();">
+    <i class="da da-refresh" aria-hidden="true"></i>
+    Aktualisieren
+</a>
+
 <div id="mcmap"></div>
 
 <div class="modal fade" id="screenshotModal" tabindex="-1" role="dialog"
@@ -44,7 +49,7 @@ $update = filemtime('index.html');
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="screenshotModalLabel">
-                    <img src="icons/map.png" alt="" id="screenshot-icon">
+                    <img src="icons/marker_location.png" alt="" id="screenshot-icon">
                     <span id="screenshot-title">Screenshot</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -72,3 +72,10 @@
     image-rendering: -moz-crisp-edges;
     image-rendering: pixelated;
 }
+
+#refresh-button {
+    position: absolute;
+    bottom: 40px;
+    right: 10px;
+    z-index: 1025;
+}
