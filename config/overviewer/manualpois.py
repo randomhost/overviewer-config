@@ -321,6 +321,15 @@ manualpois = [
         'screenshots':['piratebay.jpg']
     },
     {
+        'id':'Private',
+        'x':605,
+        'y':90,
+        'z':-146,
+        'name':'Bergsiedlung',
+        'description':'Diese verträumte kleine Bergsiedlung befindet sich seit Mitte 2020 im Aufbau. Dabei werden die meisten Gebäude nicht klassisch gebaut sondern direkt in den Fels geschlagen.',
+        'screenshots':['bergsiedlung.jpg']
+    },
+    {
         'id':'Military',
         'x':-550,
         'y':71,
@@ -335,7 +344,7 @@ manualpois = [
         'y':80,
         'z':-48,
         'name':'Kunst Galerie',
-        'description':'Dieser Kopfbahnhof bildet das vorläufige Ende der Haupt-Bahnlinie. Als Teil der darüber liegenden Kunst Galerie ist er sehr kompakt und im gleichen Design gehalten.',
+        'description':'Als Teil der darüber liegenden Kunst Galerie ist dieser Bahnhof sehr kompakt und im gleichen Design gehalten.',
         'screenshots':['ubahn-galerie.jpg']
     },
     {
@@ -409,5 +418,14 @@ manualpois = [
         'name':'Dome',
         'description':'Dieser improvisierte, temporäre Bahnhof dient der provisorischen Bahn-Anbindung des "Dome" bis über dessen weitere Erschließung entschieden wurde.',
         'screenshots':['ubahn-dome.jpg']
+    },
+    {
+        'id':'Subway',
+        'x':642,
+        'y':73,
+        'z':-131,
+        'name':'Ostgebirge',
+        'description':'Dieser Kopfbahnhof bildet das östliche Ende der Haupt-Bahnlinie, gelegen inmitten einer wunderschönen Berglandschaft.',
+        'screenshots':['ubahn-ostgebirge.jpg']
     },
 ]
