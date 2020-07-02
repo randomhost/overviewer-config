@@ -23,7 +23,7 @@ markers = [
     dict(
         name='Spieler',
         filterFunction=playerFilter,
-        icon='icons/marker_comment.png',
+        icon='icons/marker_player.png',
         checked=False
     ),
     dict(
