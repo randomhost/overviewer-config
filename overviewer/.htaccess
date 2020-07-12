@@ -1,0 +1,15 @@
+<IfModule mod_headers.c>
+  SetEnvIf Origin "http(s)?://(www\.)?random-host\.(tv|com)$" AccessControlAllowOrigin=$0
+  Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+  Header merge Vary Origin
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !=/favicon.ico
+  RewriteRule ^avatar/([a-zA-Z0-9\-_]+)(?:/|/body)*$ avatar.php\?player=$1&type=body [QSA]
+  RewriteRule ^avatar/([a-zA-Z0-9\-_]+)/head avatar.php\?player=$1&type=head [QSA]
+  RewriteRule ^avatar/([a-zA-Z0-9\-_]+)/bighead avatar.php\?player=$1&type=bighead [QSA]
+</IfModule>

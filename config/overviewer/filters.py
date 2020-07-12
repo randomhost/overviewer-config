@@ -347,8 +347,10 @@ def loadPlayerStats(poi):
 
 def playerFilter(poi):
     if poi['id'] == 'Player':
-        poi['icon'] = 'https://overviewer.org/avatar/%s' % poi['EntityId']
-        tooltipIcon = 'https://overviewer.org/avatar/%s/head' % poi['EntityId']
+        #poi['icon'] = 'https://overviewer.org/avatar/%s' % poi['EntityId']
+        #tooltipIcon = 'https://overviewer.org/avatar/%s/head' % poi['EntityId']
+        poi['icon'] = 'https://random-host.tv/games/minecraft/overviewer/avatar/%s/body' % poi['EntityId']
+        tooltipIcon = 'https://random-host.tv/games/minecraft/overviewer/avatar/%s/head' % poi['EntityId']
 
         stats=loadPlayerStats(poi)
 
