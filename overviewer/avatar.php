@@ -51,7 +51,7 @@ class Avatar
     /**
      * Directory for caching player skin textures.
      */
-    const TEXTURE_CACHE_DIR = __DIR__.'/avatars';
+    const TEXTURE_CACHE_DIR = __DIR__.'/../.avatar_cache';
 
     /**
      * Number of seconds player skin textures should be cached.
@@ -86,6 +86,15 @@ class Avatar
     public function run()
     {
         try {
+            if (!is_dir(self::TEXTURE_CACHE_DIR)
+                || !is_writable(self::TEXTURE_CACHE_DIR)
+                || !is_readable(self::TEXTURE_CACHE_DIR)
+            ) {
+                throw new RuntimeException(
+                    'Texture cache directory '.self::TEXTURE_CACHE_DIR.' not found or not accessible'
+                );
+            }
+
             if (empty($_REQUEST['player'])) {
                 throw new BadMethodCallException('Missing required parameter "player"');
             }
@@ -109,6 +118,7 @@ class Avatar
             exit(1);
         } catch (Exception $e) {
             http_response_code(503);
+            trigger_error($e->getMessage(), E_USER_WARNING);
             exit(1);
         }
     }
