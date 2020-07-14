@@ -60,7 +60,7 @@ manualpois = [
         'screenshots':['campingsite.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':64,
         'y':69,
         'z':-4,
@@ -69,7 +69,7 @@ manualpois = [
         'screenshots':['library.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':-52,
         'y':65,
         'z':166,
@@ -78,7 +78,7 @@ manualpois = [
         'screenshots':['googleplus.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':154,
         'y':65,
         'z':245,
@@ -87,7 +87,7 @@ manualpois = [
         'screenshots':['lucasartsmonument.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':-172,
         'y':72,
         'z':60,
@@ -96,7 +96,7 @@ manualpois = [
         'screenshots':['sheepmonument.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':-261,
         'y':62,
         'z':-176,
@@ -105,7 +105,7 @@ manualpois = [
         'screenshots':['pyramid.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':-226,
         'y':78,
         'z':0,
@@ -114,7 +114,7 @@ manualpois = [
         'screenshots':['spa.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':148,
         'y':71,
         'z':-68,
@@ -123,7 +123,7 @@ manualpois = [
         'screenshots':['randompalace.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':-46,
         'y':72,
         'z':234,
@@ -132,16 +132,16 @@ manualpois = [
         'screenshots':['happydome.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':306,
-        'y':83,
-        'z':-55,
+        'y':86,
+        'z':-74,
         'name':'Kunst Galerie',
         'description':'Die Kunst Galerie welche sich auf dem Berg neben Weezer\'s Villa befindet sucht noch nach Künstlern die gerne ihre Werke dort ausstellen möchten.',
         'screenshots':['artgallery.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':304,
         'y':69,
         'z':148,
@@ -150,7 +150,7 @@ manualpois = [
         'screenshots':['rabbittemple.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':-334,
         'y':64,
         'z':-445,
@@ -159,13 +159,22 @@ manualpois = [
         'screenshots':['basketballcourt.jpg']
     },
     {
-        'id':'Culture',
+        'id':'Public',
         'x':-129,
         'y':64,
         'z':-519,
         'name':'Pferderennbahn',
         'description':'Hier dreht sich alles um die entscheidende Frage: Wer hat die Nase vorn? Reitsport Fans kommen auf der Pferderennbahn voll auf ihre Kosten. Es darf gewettet werden.',
         'screenshots':['racetrack.jpg']
+    },
+    {
+        'id':'Public',
+        'x':-14,
+        'y':70,
+        'z':-164,
+        'name':'Leuchtturm',
+        'description':'Man könnte denken dass Leuchttürme nach der Einführung von GPS weitgehend überflüssig geworden sind. Aber wenn das GPS Signal bei schlechtem Wetter mal weg ist freut man sich dann doch dass es sie noch gibt.',
+        'screenshots':['leuchtturm.jpg']
     },
     {
         'id':'Commerce',
@@ -200,8 +209,8 @@ manualpois = [
         'y':64,
         'z':-488,
         'name':'I-Tower',
-        'description':'Der I-Tower ist das höchste Gebäude in dieser Welt. Allerdings scheint er nicht ganz fertig gestellt zu sein, wenn man sich einmal die vielen seltsamen Redstone Konstruktionen in der Nähe ansieht. Wir denken dass dort jemand versucht hat einen sogenannten Aufzug zu bauen, der leider nie fertig wurde.',
-        'screenshots':['itower.jpg']
+        'description':'Der I-Tower war einst das höchste Gebäude in dieser Welt. Er scheint bis heute nicht ganz fertig gestellt zu sein, wenn man sich einmal die vielen seltsamen Redstone Konstruktionen in der Nähe ansieht. Wir denken dass dort jemand versucht hat einen Aufzug zu bauen, der leider nie fertig wurde.',
+        'screenshots':['itower.jpg','itower2.jpg']
     },
     {
         'id':'Commerce',
@@ -219,7 +228,7 @@ manualpois = [
         'z':-554,
         'name':'Pumpstation 1',
         'description':'Einen Bergbau Betrieb zu betreiben bedeutet auch Verantwortung zu übernehmen. Daher sorgen wir von Random Mining Inc. mit Pumpstationen wie dieser dafür dass die Bewohner im Einzugsgebiet unserer Bergbauoperationen trockene Füße behalten.',
-        'screenshots':['pumpstation.jpg']
+        'screenshots':['pumpstation.jpg','pumpstation2.jpg']
     },
     {
         'id':'Commerce',
@@ -256,6 +265,24 @@ manualpois = [
         'name':'Bauernhof und Weingut',
         'description':'Als zertifizierter Bio-Betrieb erhalten sie bei uns Gemüse, Eier, Fleisch-Produkte und alkoholische Getränke aus garantiert ökologischer Produktion.',
         'screenshots':['farmer.jpg']
+    },
+    {
+        'id':'Commerce',
+        'x':-397,
+        'y':63,
+        'z':-515,
+        'name':'Telekommunikationsunternehmen',
+        'description':'Dieser Standort eines Telekommunikationsunternehmens beherbergt unter anderem den örtlichen Fernmeldeturm.',
+        'screenshots':['telekom.jpg',]
+    },
+    {
+        'id':'Commerce',
+        'x':-405,
+        'y':208,
+        'z':-547,
+        'name':'Fernmeldeturm',
+        'description':'Im inhaltlich innovativen Inneren dieses famos formidablen Fernmeldeturms verbirgt sich tendenziell teure Technik und ein relativ renommiertes Restaurant.',
+        'screenshots':['fernmeldeturm.jpg']
     },
     {
         'id':'Private',

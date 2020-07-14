@@ -36,9 +36,9 @@ markers = [
         checked=True
     ),
     dict(
-        name='Kultur & Bildung',
-        filterFunction=filterBuilder('Culture', 'Kultur & Bildung'),
-        icon='icons/marker_culture.png',
+        name='Öffentliche Gebäude',
+        filterFunction=filterBuilder('Public', 'Öffentliche Gebäude'),
+        icon='icons/marker_public.png',
         showIconInLegend=True,
         checked=True
     ),
