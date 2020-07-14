@@ -14,6 +14,13 @@ file paths and HTML snippets.
 
 **WARNING: Do not use this configuration before you finished customizing it to fit your needs.**
 
+* `.avatar_cache`  
+  This directory holds cached player skin textures retrieved from Mojang's servers by
+  `overviewer/avatar.php`. It's only needed when using the included PHP player skin fetcher instead
+  of the official one.
+  
+  **Note:** This directory must be readable and writable by the web server.
+
 * `bin/overviever`  
   This is a Bash script wrapper for `overviewer.py` which utilized Linux's `nice` command to modify
   the process priority of Overviewer so it doesn't use up all available system resources.
@@ -53,15 +60,22 @@ file paths and HTML snippets.
   Custom marker icons.
   
 * `overviewer/images/`  
-  Custom images such as the Random-Host.tv logo and player skin background.
+  Custom images such as the Random-Host.tv logo, player skin background and the screenshots attached
+  to the POIs defined in `manualpois.py`.
   
 * `overviewer/js/`  
   JavaScript files including Bootstrap 4, jQuery and custom logic for displaying screenshot and
   player stats modals.
   
-* `overviewer/screenshots/`  
-  This folder holds the screenshots attached to the POIs defined in `manualpois.py`.
-   
+* `overviewer/index.php`  
+  Custom PHP index file which provides more flexibility than the placeholders supported by the
+  `customwebassets` config option. 
+  
+* `overviewer/avatar.php`  
+  Custom PHP player skin fetcher.
+  
+  At the time of writing, this one fixes some of the bugs which the official avatar endpoint at
+  `https://overviewer.org/avatar/<playerName>` has while also being a bit faster.
 
 Updating Translation Files
 --------------------------
@@ -76,7 +90,6 @@ Then go to `C:\Users\<user>\AppData\Roaming\.minecraft\assets\objects\`, find th
 matches the first 2 letters of the hash (e.g. `a7`) and copy the file which matches the hash value
 (e.g. `a7aee558478697d29ac284e041dbc38dc7804e0e`). Finally rename the file back to it's proper
 name (e.g. `de_de.json`).
-
 
 License
 -------
