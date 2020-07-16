@@ -25,7 +25,7 @@ import os
 
 locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')
 
-translationFilePath= '/home/minecraft/config/overviewer/de_de.json'
+translationFilePath= '/home/minecraft/.l10n_cache/de_de.json'
 logging.info('Loading translations from \'%s\'', translationFilePath)
 if os.path.isfile(translationFilePath):
     with open(translationFilePath, 'r') as translationFile:
