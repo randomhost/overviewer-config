@@ -1,6 +1,10 @@
 <?php
 setlocale(LC_TIME, 'de_DE.UTF-8');
-$update = filemtime('index.html');
+$indexFile = 'index.html';
+$update = 0;
+if(file_exists($indexFile)) {
+    $update = filemtime($indexFile);
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -23,11 +27,15 @@ $update = filemtime('index.html');
             <img src="images/logo.png" class="d-inline-block align-top" width="32" height="32" alt="">&nbsp;Random-Host.tv
             <small class="ml-3"><i class="da da-map" aria-hidden="true"></i> Minecraft Map</small>
         </a>
-        <div class="navbar-nav ml-auto">
+        <div class="navbar-nav">
             <span class="navbar-text">
                 <i class="da da-clock-o" aria-hidden="true"></i>
                 Stand: <?= strftime("%A %d.%m.%Y, %H:%M:%S", $update) ?>
             </span>
+            <a class="btn btn-secondary ml-2" title="Mehr über diese Karte erfahren" href="#" data-toggle="modal" data-target="#infoModal">
+                <i class="da da-info-circle" aria-hidden="true"></i>
+                <span class="sr-only">Mehr über diese Karte erfahren</span>
+            </a>
         </div>
     </nav>
 </header>
@@ -144,6 +152,59 @@ $update = filemtime('index.html');
                         </table>
                     </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    <i class="da da-close" aria-hidden="true"></i>
+                    Schließen
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog"
+     aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="infoModalLabel">
+                    <i class="da da-info-circle" aria-hidden="true"></i>
+                    Über diese Karte
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Diese Karte wurde mit Hilfe von
+                    <a href="https://overviewer.org/" class="text-nowrap" target="_blank"><i class="da da-external-link" aria-hidden="true"></i> Minecraft Overviewer</a>,
+                    einer kostenlosen <strong>Open Source</strong> Software deren Quellcode frei auf
+                    <a href="https://github.com/overviewer/Minecraft-Overviewer/" class="text-nowrap" target="_blank"><i class="da da-github" aria-hidden="true"></i> GitHub</a>
+                    verfügbar ist, aus der Minecraft Welt des
+                    <a href="https://random-host.tv" class="text-nowrap" target="_blank"><i class="da da-external-link" aria-hidden="true"></i> Random-Host.tv</a>
+                    Servers generiert.
+                </p>
+                <p>
+                    Ganz im Sinne des <strong>Open Source</strong> Gedankens stellen wir die
+                    Konfigurationsdateien und selbst geschriebenen Scripte welche wir zur Bereitstellung
+                    der Karte einsetzen ebenfalls unter einer
+                    <a href="https://github.com/randomhost/overviewer-config/blob/master/LICENSE.txt" class="text-nowrap" target="_blank"><i class="da da-balance-scale" aria-hidden="true"></i> Open Source Lizenz</a>
+                    auf
+                    <a href="https://github.com/randomhost/overviewer-config" class="text-nowrap" target="_blank"><i class="da da-github" aria-hidden="true"></i> GitHub</a>
+                    zur Verfügung.
+                </p>
+                <p class="alert alert-info">
+                    <strong>Hinweis:</strong><br>
+                    Bitte beachte dass unsere Konfigurationsdateien nur zu Anschauungszwecken dienen
+                    und nicht ohne Anpassungen auf anderen Minecraft Servern funktionieren werden.
+                </p>
+                <p>
+                    <a href="https://github.com/randomhost/overviewer-config" class="btn btn-primary" target="_blank">
+                        <i class="da da-github" aria-hidden="true"></i> GitHub Projekt
+                    </a>
+                </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
