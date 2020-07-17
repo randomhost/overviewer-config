@@ -1,18 +1,36 @@
 Random-Host.tv Overviewer
 =========================
 
+Table of Contents
+-----------------
+
+* [Introduction](#introduction)
+* [Disclaimer](#disclaimer)
+* [Usage](#usage)
+* [Updating Localization Files](#updating-localization-files)
+* [License](#license)
+
+Introduction
+------------
+
 This is the [Minecraft Overviewer][1] configuration used to render the [Minecraft Map][2]
 on [Random-Host.tv][3].
 
-Usage
------
+Disclaimer
+----------
 
-**Note:**  
 This configuration is being provided for **reference purposes** and will likely not work on
 other Overviewer installations without extensive modifications, especially with regards to hardcoded
 file paths and HTML snippets.
 
 **WARNING: Do not use this configuration before you finished customizing it to fit your needs.**
+
+Usage
+-----
+
+This section describes the file structure of the package and the purpose of each component.
+
+For general information on how to use Overviewer, please refer to the [Overviewer documentation][4]. 
 
 * `.avatar_cache`  
   This directory holds cached player skin textures retrieved from Mojang's servers by
@@ -20,6 +38,11 @@ file paths and HTML snippets.
   of the official one.
   
   **Note:** This directory must be readable and writable by the web server.
+  
+* `.l10n_cache`  
+  This directory holds localization assets retrieved from Mojang's servers by `bin/fetch-localizations.php`.
+  
+  **Note:** This directory must be readable and writable by the PHP script.
 
 * `bin/overviever`  
   This is a Bash script wrapper for `overviewer.py` which utilized Linux's `nice` command to modify
@@ -27,12 +50,12 @@ file paths and HTML snippets.
   
   The script renders both tiles and POIs by default. Run `bin/overviever -h` for more options. 
   
-* `config/overviewer/de_de.json`  
-  This is a snapshot of Minecraft's language files - German in this case - which is used to
-  translate player statistics into human readable strings.
+* `bin/fetch-localizations.php`  
+  This PHP script is used to download the Minecraft localization assets for translating player
+  statistics into the chosen language.
   
-  **Note:** This file has to be extracted from Minecraft's `assets` folder after every update. See
-  section [Updating Translation Files](#updating-translation-files) for more information.
+  **Note:** This script has to be executed after every Minecraft update. See section
+  [Updating Localization Files](#updating-localization-files) for more information.
   
 * `config/overviewer/filters.py`  
   This file holds the filter functions which contain the logic for building custom POI popups,
@@ -77,19 +100,30 @@ file paths and HTML snippets.
   At the time of writing, this one fixes some of the bugs which the official avatar endpoint at
   `https://overviewer.org/avatar/<playerName>` has while also being a bit faster.
 
-Updating Translation Files
---------------------------
+Updating Localization Files
+---------------------------
 
-The Minecraft client stores resources like language files under a cryptic name and path. To figure
-out where to find the corresponding translations for your desired language (e.g. `de_de.json`),
-open `C:\Users\<user>\AppData\Roaming\.minecraft\assets\indexes\<version>.json` (assuming you are
-playing on Windows) in a text editor and identify the corresponding hash value (e.g.
-`"minecraft/lang/de_de.json": {"hash": "a7aee558478697d29ac284e041dbc38dc7804e0e", "size": 292313}`).
+Users who intend on including the "last known player location" special point of interest into their
+Overviewer renders **must** execute the included `bin/fetch-localizations.php` script at least once
+after **every** Minecraft version change to download localization assets for the corresponding
+Minecraft version.
 
-Then go to `C:\Users\<user>\AppData\Roaming\.minecraft\assets\objects\`, find the folder which
-matches the first 2 letters of the hash (e.g. `a7`) and copy the file which matches the hash value
-(e.g. `a7aee558478697d29ac284e041dbc38dc7804e0e`). Finally rename the file back to it's proper
-name (e.g. `de_de.json`).
+These localization assets must match the used Minecraft version **exactly** or Overviewer may fail
+to generate points of interest if any translations were renamed or removed between versions.
+
+**Example for Minecraft release versions**
+
+```bash
+php bin/fetch-localizations.php --version 1.16.1
+```
+
+**Example for Minecraft snapshot versions**
+
+```bash
+php bin/fetch-localizations.php --version 20w06a
+```
+
+Downloaded translation assets are stored in the `.l10n_cache` folder. 
 
 License
 -------
@@ -99,3 +133,4 @@ See LICENSE.txt for full license details.
 [1]: https://github.com/overviewer/Minecraft-Overviewer/
 [2]: https://random-host.tv/games/minecraft/overviewer/
 [3]: https://random-host.tv/
+[4]: https://docs.overviewer.org/en/latest/
