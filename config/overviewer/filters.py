@@ -413,7 +413,7 @@ def filterBuilder(id, category):
                                 <i aria-hidden="true" class="da da-search-plus zoom-icon"></i>
                             </div>
                         </a>
-                    '''.format(screenshot=screenshot,title=poi['name'],description=poi['description'],icon=id.lower())
+                    '''.format(screenshot=screenshot,title=html.escape(poi['name']),description=html.escape(poi['description']),icon=id.lower())
                     )
                 else:
                     screenshotContainerHtml = '''

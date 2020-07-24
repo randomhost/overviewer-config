@@ -21,7 +21,7 @@ manualpois = [
         'z':31,
         'name':'Random Park',
         'description':'Jemand muss eine Vorliebe für Pyramiden gehabt haben, denn dieser Park ist von einer großen Glas-Pyramide umschlossen. Die Spitze wurde in Anlehnung an die alten ägypthischen Pyramiden in goldener Farbe gestrichen. Es ist wirklich nur Farbe. Es ist nicht nötig herauf zu klettern und sich selbst davon zu überzeugen. Wir möchten nicht dass sich jemand verletzt.',
-        'screenshots':['randompark.jpg']
+        'screenshots':['park.jpg']
     },
     {
         'id':'Park',
@@ -30,7 +30,7 @@ manualpois = [
         'z':132,
         'name':'Random Beach Resort',
         'description':'Es gibt Zeiten im Leben in denen man einfach eine Pause braucht, fern vom Alltag, an einem wunderschönen Sandstrand wo man nur das leise Rauschen der Wellen und das Rascheln der Palmen-Blätter hört, und natürlich den Kellner der freundlich fragt welchen Cocktail man gerne haben möchte.',
-        'screenshots':['randombeachresort.jpg']
+        'screenshots':['random-beach-resort.jpg']
     },
     {
         'id':'Park',
@@ -39,7 +39,7 @@ manualpois = [
         'z':-389,
         'name':'Random Beach',
         'description':'Ein Spaziergang am Strand, Baden im Meer, Entspannen in der Sonne, Beachvolleyball oder Shopping am Random Pier. Random Beach bietet all das und mehr.',
-        'screenshots':['randombeach.jpg']
+        'screenshots':['random-beach.jpg']
     },
     {
         'id':'Park',
@@ -48,7 +48,7 @@ manualpois = [
         'z':28,
         'name':'Kleiner Teich',
         'description':'Am Eingang des kleines Dorfes liegt ein kleiner Teich mit einem großen Baum in der Mitte und einem kleinen Boot, welches schon seit vielen, vielen Jahren dort zu treiben scheint.',
-        'screenshots':['randompond.jpg']
+        'screenshots':['teich.jpg']
     },
     {
         'id':'Park',
@@ -57,7 +57,7 @@ manualpois = [
         'z':-710,
         'name':'Zeltplatz',
         'description':'Was gibt es schöneres als ein Zelt auf modrig feuchtem Waldboden aufzuschlagen und am nächsten Morgen von Waldameisen geweckt zu werden die einem über das Gesicht krabbeln? Na gut. Vielleicht ist das nicht jedermanns Ding. Aber wer so etwas mag ist hier definitiv am richtigen Ort.',
-        'screenshots':['campingsite.jpg']
+        'screenshots':['zeltplatz.jpg']
     },
     {
         'id':'Public',
@@ -66,7 +66,7 @@ manualpois = [
         'z':-4,
         'name':'Bibliothek',
         'description':'Bücher wurden vor der Erfindung von eBook-Readern benutzt um Wissen zu transferieren. Eine Bibliothek ist im Wesentlichen ein Aufbewahrungsraum für Bücher da es sich bei Büchern um physische Gegenstände handelt welche derzeit nicht auf einer Speicherkarte abgelegt werden können.',
-        'screenshots':['library.jpg']
+        'screenshots':['bibliothek.jpg']
     },
     {
         'id':'Public',
@@ -75,7 +75,7 @@ manualpois = [
         'z':166,
         'name':'Google+ Denkmal',
         'description':'Frag einfach nicht.',
-        'screenshots':['googleplus.jpg']
+        'screenshots':['google-plus.jpg']
     },
     {
         'id':'Public',
@@ -84,7 +84,7 @@ manualpois = [
         'z':245,
         'name':'Lucas Arts Denkmal',
         'description':'Das Lucas Arts Trio: Guybrush Threepwood, Henry "Nenn\' mich nicht Junior" Jones Junior, Purpur Tentakel',
-        'screenshots':['lucasartsmonument.jpg']
+        'screenshots':['lucasarts-denkmal.jpg']
     },
     {
         'id':'Public',
@@ -93,7 +93,7 @@ manualpois = [
         'z':60,
         'name':'Schaf Denkmal',
         'description':'Heil dem großen Schaf , Mutter von... eigentlich wissen wir gar nicht ob das große Schaf die Mutter von irgend jemandem ist, aber es gibt Gerüchte dass Leute bereits IM großen Schaf waren. Abartig',
-        'screenshots':['sheepmonument.jpg']
+        'screenshots':['schaf-denkmal.jpg']
     },
     {
         'id':'Public',
@@ -102,7 +102,10 @@ manualpois = [
         'z':-176,
         'name':'Pyramide',
         'description':'Über die Ursprünge der großen Pyramide ist nicht viel bekannt. Einige glauben sie wurde von einer antiken Zivilisation errichtet. Andere glauben sie wurde von Außerirdischen gebaut. Was denkst DU woher sie kommt?',
-        'screenshots':['pyramid.jpg']
+        'screenshots':[
+            'pyramide-aussen.jpg',
+            'pyramide-innen.jpg'
+        ]
     },
     {
         'id':'Public',
@@ -111,7 +114,16 @@ manualpois = [
         'z':0,
         'name':'Erholungsbad',
         'description':'Gestresst? Gönn\' dir eine Pause vom harten Alltag als Minenarbeiter und nimm ein entspannendes Bad im Whirlpool, eine belebende Dusche oder genieße eine heiße reinigende Sitzung in der Sauna.',
-        'screenshots':['spa.jpg']
+        'screenshots':[
+            'schwimmbad-aussen-1.jpg',
+            'schwimmbad-aussen-2.jpg',
+            'schwimmbad-aussen-3.jpg',
+            'schwimmbad-innen-1.jpg',
+            'schwimmbad-innen-2.jpg',
+            'schwimmbad-innen-3.jpg',
+            'schwimmbad-strand.jpg',
+            'schwimmbad-strand-pool.jpg'
+        ]
     },
     {
         'id':'Public',
@@ -120,16 +132,16 @@ manualpois = [
         'z':-68,
         'name':'Random Palace',
         'description':'Wirf einen Blick auf die erstaunliche Architektur von Random Palace, erbaut im späten... verdammt. Wir haben den Tag vergessen an dem uns DERART langweilig war.',
-        'screenshots':['randompalace.jpg']
+        'screenshots':['random-palace.jpg']
     },
     {
         'id':'Public',
         'x':-46,
         'y':72,
         'z':234,
-        'name':'Happy Dome',
+        'name':'The Dome',
         'description':'Wenn du denkst Pyramiden wären seltsam, warte mal bis du das hier gesehen hast. Es ist eine mysteriöse Glas-Kugel die aus dem Wasser schaut. Im Inneren läuft Lava unter römischen Ziffern in die Tiefe. In der Mitte befindet sich irgend eine Art Gerät. Was zum Teufel ist hier los?',
-        'screenshots':['happydome.jpg']
+        'screenshots':['dome.jpg']
     },
     {
         'id':'Public',
@@ -138,7 +150,7 @@ manualpois = [
         'z':-74,
         'name':'Kunst Galerie',
         'description':'Die Kunst Galerie welche sich auf dem Berg neben Weezer\'s Villa befindet sucht noch nach Künstlern die gerne ihre Werke dort ausstellen möchten.',
-        'screenshots':['artgallery.jpg']
+        'screenshots':['kunstgalerie.jpg']
     },
     {
         'id':'Public',
@@ -147,7 +159,7 @@ manualpois = [
         'z':148,
         'name':'Kaninchen Tempel',
         'description':'Dies ist die heilige Stätte der Kaninchen-Anbeter. Dort werden regelmäßig magische Rituale durchgeführt welche Kaninchen überall in der Welt erscheinen lassen. Viele Kaninchen. Sehr viele Kaninchen. ZU VIELE KANINCHEN. MACH DASS ES AUFHÖRT!!! AAAAARGHHHH!!!!!!!',
-        'screenshots':['rabbittemple.jpg']
+        'screenshots':['kaninchen-tempel.jpg']
     },
     {
         'id':'Public',
@@ -156,7 +168,7 @@ manualpois = [
         'z':-445,
         'name':'Baketball Spielfeld',
         'description':'Wer sich sportlich betätigt hat was zu tun und bleibt gesund. Wie wäre es mit einer Runde Basketball?',
-        'screenshots':['basketballcourt.jpg']
+        'screenshots':['basketball-spielfeld.jpg']
     },
     {
         'id':'Public',
@@ -165,7 +177,7 @@ manualpois = [
         'z':-519,
         'name':'Pferderennbahn',
         'description':'Hier dreht sich alles um die entscheidende Frage: Wer hat die Nase vorn? Reitsport Fans kommen auf der Pferderennbahn voll auf ihre Kosten. Es darf gewettet werden.',
-        'screenshots':['racetrack.jpg']
+        'screenshots':['pferderennbahn.jpg']
     },
     {
         'id':'Public',
@@ -183,7 +195,7 @@ manualpois = [
         'z':31,
         'name':'Random Mining Inc.',
         'description':'Random Mining Inc. ist allgemein bekannt als das erste Gebäude das jemals gebaut wurde. Daher steht es unter Denkmalschutz und soll bis zu dem Tag in dieser Welt verweilen, an dem der Nether zufriert.',
-        'screenshots':['randommining.jpg']
+        'screenshots':['random-mining.jpg']
     },
     {
         'id':'Commerce',
@@ -192,7 +204,13 @@ manualpois = [
         'z':59,
         'name':'Random Office',
         'description':'Wir sind nicht gerade stolz auf diesen eher hässlichen Büro-Wolkenkratzer aber um Unternehmen in unsere kleine verträumte Welt zu locken mussten wir ihnen Büroflächen zur Verfügung stellen. Glücklicherweise befindet sich das Erholungsbad direkt nebenan. So kann man sich nach der harten Arbeit direkt wieder entspannen.',
-        'screenshots':['randomoffice.jpg']
+        'screenshots':[
+            'buero-aussen.jpg',
+            'buero-innen-1.jpg',
+            'buero-innen-2.jpg',
+            'buero-innen-3.jpg',
+            'buero-innen-4.jpg'
+        ]
     },
     {
         'id':'Commerce',
@@ -201,7 +219,7 @@ manualpois = [
         'z':-60,
         'name':'Hotel Random',
         'description':'Da eine Villa auf einem Berg offenbar nicht genug ist beantragte der selbe Typ der sie gebaut hat noch eine Genehmigung für ein Hotel an unserem wunderschönen Strand. Eigentlich wollten wir ablehnen, aber die Marketing Abteilung war der Ansicht dass Tourismus gut für uns ist, daher...',
-        'screenshots':['hotelrandom.jpg']
+        'screenshots':['hotel-random.jpg']
     },
     {
         'id':'Commerce',
@@ -210,7 +228,10 @@ manualpois = [
         'z':-488,
         'name':'I-Tower',
         'description':'Der I-Tower war einst das höchste Gebäude in dieser Welt. Er scheint bis heute nicht ganz fertig gestellt zu sein, wenn man sich einmal die vielen seltsamen Redstone Konstruktionen in der Nähe ansieht. Wir denken dass dort jemand versucht hat einen Aufzug zu bauen, der leider nie fertig wurde.',
-        'screenshots':['itower.jpg','itower2.jpg']
+        'screenshots':[
+            'itower.jpg',
+            'itower-aussicht.jpg'
+        ]
     },
     {
         'id':'Commerce',
@@ -228,7 +249,10 @@ manualpois = [
         'z':-554,
         'name':'Pumpstation 1',
         'description':'Einen Bergbau Betrieb zu betreiben bedeutet auch Verantwortung zu übernehmen. Daher sorgen wir von Random Mining Inc. mit Pumpstationen wie dieser dafür dass die Bewohner im Einzugsgebiet unserer Bergbauoperationen trockene Füße behalten.',
-        'screenshots':['pumpstation.jpg','pumpstation2.jpg']
+        'screenshots':[
+            'pumpstation-aussen.jpg',
+            'pumpstation-innen.jpg'
+        ]
     },
     {
         'id':'Commerce',
@@ -237,7 +261,7 @@ manualpois = [
         'z':-485,
         'name':'Tankstelle',
         'description':'Mit den zertifizierten schadstoffarmen Krafstoffen von Random Mining Inc. wissen Sie stets genau was in ihren Tank kommt und tun dabei noch etwas für die Umwelt. Mit Random Mining Inc. in die automobile Zukunft.',
-        'screenshots':['gasstation.jpg']
+        'screenshots':['tankstelle.jpg']
     },
     {
         'id':'Commerce',
@@ -246,7 +270,11 @@ manualpois = [
         'z':-459,
         'name':'Wasseraufbereitung',
         'description':'Unter Einhaltung moderner Industriestandards und strenger Naturschutzvorschriften sorgt Random Mining Disposal Services für eine sichere Aufbereitung von Schmutzwasser in allen Bereichen.',
-        'screenshots':['sewageworks.jpg']
+        'screenshots':[
+            'wasseraufbereitung.jpg',
+            'wasseraufbereitung-buero.jpg',
+            'wasseraufbereitung-kanalisation.jpg'
+        ]
     },
     {
         'id':'Commerce',
@@ -255,7 +283,11 @@ manualpois = [
         'z':-458,
         'name':'Fastfood Restaurant',
         'description':'Für den kleinen Hunger zwischendurch bietet dieses Fastfood Restaurant direkt an der Hauptstraße günstige Gerichte für jung und alt.',
-        'screenshots':['fastfood.jpg']
+        'screenshots':[
+            'fastfood-aussen.jpg',
+            'fastfood-drive-in.jpg',
+            'fastfood-innen.jpg'
+        ]
     },
     {
         'id':'Commerce',
@@ -264,7 +296,10 @@ manualpois = [
         'z':-614,
         'name':'Bauernhof und Weingut',
         'description':'Als zertifizierter Bio-Betrieb erhalten sie bei uns Gemüse, Eier, Fleisch-Produkte und alkoholische Getränke aus garantiert ökologischer Produktion.',
-        'screenshots':['farmer.jpg']
+        'screenshots':[
+            'bauer.jpg',
+            'bauer-weinberg.jpg'
+        ]
     },
     {
         'id':'Commerce',
@@ -282,7 +317,10 @@ manualpois = [
         'z':-547,
         'name':'Fernmeldeturm',
         'description':'Im inhaltlich innovativen Inneren dieses famos formidablen Fernmeldeturms verbirgt sich tendenziell teure Technik und ein relativ renommiertes Restaurant.',
-        'screenshots':['fernmeldeturm.jpg']
+        'screenshots':[
+            'fernmeldeturm-aussen.jpg',
+            'fernmeldeturm-innen.jpg'
+        ]
     },
     {
         'id':'Private',
@@ -291,7 +329,11 @@ manualpois = [
         'z':-84,
         'name':'Villa Random',
         'description':'Jemand der sich uns nur als "RandomHost" vorstellte kam zu uns und fragte nach einer Baugenehmigung für eine Art Villa auf der Spitze eines Hügels. Wir gaben sie ihm, zogen die "Bearbeitungsgebühr" ein und haben das Weite gesucht. Später erzählte man uns dass der kranke Spinner das Ding tatsächlich gebaut hat aber niemand konnte uns sagen wie sicher es dort oben ist. Das musst du dann wohl selbst herausfinden.',
-        'screenshots':['villarandom.jpg']
+        'screenshots':[
+            'villa-random-aussen.jpg',
+            'villa-random-innen-1.jpg',
+            'villa-random-innen-2.jpg'
+        ]
     },
     {
         'id':'Private',
@@ -300,7 +342,7 @@ manualpois = [
         'z':70,
         'name':'Random Village',
         'description':'Es macht fast den Eindruck als ob dieses kleine Dorf über Nacht aufgetaucht wäre. Wir erinnern uns noch an die Zeit als das hier alles noch unbebautes Grasland war. Jetzt ist es ein nettes kleines Dorf mit einem eigenen Brunnen und einer kleinen Kapelle.',
-        'screenshots':['randomvillage.jpg']
+        'screenshots':['dorf.jpg']
     },
     {
         'id':'Private',
@@ -309,7 +351,7 @@ manualpois = [
         'z':47,
         'name':'Weezer\'s Villa',
         'description':'Weezer ist ein cooler Typ. Vielleicht haben wir ihn deshalb einen ganzen Berg abtragen lassen um seine Villa zu bauen. Tatsächlich ist besagte Villa ziemlich hübsch geworden. Über den verstecken Raum im Keller spricht er jedoch nicht gerne.',
-        'screenshots':['weezersmansion.jpg']
+        'screenshots':['weezers-villa.jpg']
     },
     {
         'id':'Private',
@@ -318,7 +360,7 @@ manualpois = [
         'z':91,
         'name':'Weezer\'s Yacht',
         'description':'Natürlich hat Weezer auch ein eigenes Boot. Und weil ein einfaches Motorboot nicht genug ist, hat er sich gleich ein Yacht besorgt. Klar. Warum auch nicht?',
-        'screenshots':['weezersyacht.jpg']
+        'screenshots':['weezers-yacht.jpg']
     },
     {
         'id':'Private',
@@ -327,7 +369,7 @@ manualpois = [
         'z':97,
         'name':'Two and a Half Blocks',
         'description':'Dieses wunderschöne Strandhaus wird vermutlich von einem hedonistischen Werbemelodien-Songschreiber oder so etwas bewohnt. Jedenfalls sieht es recht teuer aus.',
-        'screenshots':['twoandahalfblocks.jpg']
+        'screenshots':['two-and-a-half-blocks.jpg']
     },
     {
         'id':'Private',
@@ -336,7 +378,7 @@ manualpois = [
         'z':175,
         'name':'Jarkko\'s Festung',
         'description':'Diese Festung gehört einem Typen namens Jarkko. Wir haben ihn allerdings eine ganze Weile nicht gesehen. Sein lebloser Körper verwest wahrscheinlich irgendwo hintern diesen Mauern. Geh und finde es selbst heraus, denn wir werden ganz sicher keinen Fuß dort hinein setzen.',
-        'screenshots':['jarkkosfortress.jpg']
+        'screenshots':['jarkkos-burg.jpg']
     },
     {
         'id':'Private',
@@ -345,7 +387,13 @@ manualpois = [
         'z':181,
         'name':'Piratenbucht',
         'description':'Die Piratenbucht beheimatet die Lieblingstaverne einiger schrecklich wichtiger Piraten sowie internationale teilweise mythisch anmutende Geschäfte.',
-        'screenshots':['piratebay.jpg']
+        'screenshots':[
+            'piratenbucht.jpg',
+            'piratenbucht-baecker.jpg',
+            'piratenbucht-scumm-bar-1.jpg',
+            'piratenbucht-scumm-bar-1.jpg',
+            'piratenbucht-scumm-bar-1.jpg'
+        ]
     },
     {
         'id':'Private',
@@ -357,13 +405,22 @@ manualpois = [
         'screenshots':['bergsiedlung.jpg']
     },
     {
+        'id':'Private',
+        'x':-269,
+        'y':82,
+        'z':-53,
+        'name':'Baumhaus',
+        'description':'Dieses schnuckelige Baumhaus gehört offenbar zur Villa nebenan. Die Anbauten sind etwas weitläufiger als man von einem Baumhaus erwartet.',
+        'screenshots':['baumhaus.jpg']
+    },
+    {
         'id':'Military',
         'x':-550,
         'y':71,
         'z':-548,
         'name':'Militärbasis',
         'description':'Der Zweck der als Bunker angelegten Militärbasis im Inneren dieses Berges unterliegt strikter Geheimhaltung. Luftaufnahmen zeigen eine schwer gepanzerte Stahlplatte an der Spitze des Berges welche möglicherweise ein Raketensilo verschließt. Mehr Informationen liegen uns leider nicht vor.',
-        'screenshots':['militarybase.jpg']
+        'screenshots':['militaerbasis-aussen.jpg']
     },
     {
         'id':'Subway',
@@ -390,7 +447,7 @@ manualpois = [
         'z':28,
         'name':'Random Mining Inc.',
         'description':'Heute ein Durchgangsbahnhof war diese Station früher der Ausgangspunkt der ersten Bahnlinie. Das heutige Minenstollen Motiv wurde erst viel später nachgerüstet.',
-        'screenshots':['ubahn-randommining.jpg']
+        'screenshots':['ubahn-random-mining.jpg']
     },
     {
         'id':'Subway',
@@ -399,7 +456,10 @@ manualpois = [
         'z':28,
         'name':'Erholungsbad / Park',
         'description':'In Anlehnung an den oberirdischen Außenposten von Jarkko\'s Insel wurde dieser Bahnhof vollständig in Backstein-Optik gestaltet. Früher war dies der Endpunkt der Bahnlinie. Heute ist er ein Knotenpunkt an dem Nord- und Südlinie zusammen treffen.',
-        'screenshots':['ubahn-park.jpg','ubahn-park2.jpg']
+        'screenshots':[
+            'ubahn-park-1.jpg',
+            'ubahn-park-2.jpg'
+        ]
     },
     {
         'id':'Subway',

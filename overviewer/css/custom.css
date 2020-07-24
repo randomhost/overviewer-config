@@ -1,7 +1,7 @@
 .screenshot-container {
+    display: inline-block;
     position: relative;
-    width: 200px;
-    margin: 0 auto;
+    width: 140px;
     color: #FFF;
     font-size: 18px
 }
