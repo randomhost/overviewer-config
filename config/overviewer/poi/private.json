@@ -94,5 +94,15 @@
         "x": -269,
         "y": 82,
         "z": -53
+    },
+    {
+        "name": "Kölner Veedel",
+        "description": "Dieses eher \"dörfliche\" Gebiet außerhalb des Stadtkerns besteht vorwiegend aus Wohnhäusern und kleinen Betrieben.",
+        "screenshots": [
+            "koelner-veedel.jpg"
+        ],
+        "x": -434,
+        "y": 74,
+        "z": -673
     }
 ]
