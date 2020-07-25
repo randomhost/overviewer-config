@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Militärbasis",
+        "description": "Der Zweck der als Bunker angelegten Militärbasis im Inneren dieses Berges unterliegt strikter Geheimhaltung. Luftaufnahmen zeigen eine schwer gepanzerte Stahlplatte an der Spitze des Berges welche möglicherweise ein Raketensilo verschließt. Mehr Informationen liegen uns leider nicht vor.",
+        "screenshots": [
+            "militaerbasis-aussen.jpg"
+        ],
+        "x": -550,
+        "y": 71,
+        "z": -548
+    }
+]

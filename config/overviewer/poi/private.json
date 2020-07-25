@@ -1,0 +1,98 @@
+[
+    {
+        "name": "Villa Random",
+        "description": "Jemand der sich uns nur als \"RandomHost\" vorstellte kam zu uns und fragte nach einer Baugenehmigung für eine Art Villa auf der Spitze eines Hügels. Wir gaben sie ihm, zogen die \"Bearbeitungsgebühr\" ein und haben das Weite gesucht. Später erzählte man uns dass der kranke Spinner das Ding tatsächlich gebaut hat aber niemand konnte uns sagen wie sicher es dort oben ist. Das musst du dann wohl selbst herausfinden.",
+        "screenshots": [
+            "villa-random-aussen.jpg",
+            "villa-random-innen-1.jpg",
+            "villa-random-innen-2.jpg"
+        ],
+        "x": -306,
+        "y": 98,
+        "z": -84
+    },
+    {
+        "name": "Random Village",
+        "description": "Es macht fast den Eindruck als ob dieses kleine Dorf über Nacht aufgetaucht wäre. Wir erinnern uns noch an die Zeit als das hier alles noch unbebautes Grasland war. Jetzt ist es ein nettes kleines Dorf mit einem eigenen Brunnen und einer kleinen Kapelle.",
+        "screenshots": [
+            "dorf.jpg"
+        ],
+        "x": 138,
+        "y": 75,
+        "z": 70
+    },
+    {
+        "name": "Weezers Villa",
+        "description": "Weezer ist ein cooler Typ. Vielleicht haben wir ihn deshalb einen ganzen Berg abtragen lassen um seine Villa zu bauen. Tatsächlich ist besagte Villa ziemlich hübsch geworden. Über den verstecken Raum im Keller spricht er jedoch nicht gerne.",
+        "screenshots": [
+            "weezers-villa.jpg"
+        ],
+        "x": 237,
+        "y": 67,
+        "z": 47
+    },
+    {
+        "name": "Weezers Yacht",
+        "description": "Natürlich hat Weezer auch ein eigenes Boot. Und weil ein einfaches Motorboot nicht genug ist, hat er sich gleich ein Yacht besorgt. Klar. Warum auch nicht?",
+        "screenshots": [
+            "weezers-yacht.jpg"
+        ],
+        "x": 199,
+        "y": 63,
+        "z": 91
+    },
+    {
+        "name": "Two and a Half Blocks",
+        "description": "Dieses wunderschöne Strandhaus wird vermutlich von einem hedonistischen Werbemelodien-Songschreiber oder so etwas bewohnt. Jedenfalls sieht es recht teuer aus.",
+        "screenshots": [
+            "two-and-a-half-blocks.jpg"
+        ],
+        "x": -150,
+        "y": 68,
+        "z": 97
+    },
+    {
+        "name": "Jarkkos Festung",
+        "description": "Diese Festung gehört einem Typen namens Jarkko. Wir haben ihn allerdings eine ganze Weile nicht gesehen. Sein lebloser Körper verwest wahrscheinlich irgendwo hintern diesen Mauern. Geh und finde es selbst heraus, denn wir werden ganz sicher keinen Fuß dort hinein setzen.",
+        "screenshots": [
+            "jarkkos-burg.jpg"
+        ],
+        "x": -272,
+        "y": 95,
+        "z": 175
+    },
+    {
+        "name": "Piratenbucht",
+        "description": "Die Piratenbucht beheimatet die Lieblingstaverne einiger schrecklich wichtiger Piraten sowie internationale teilweise mythisch anmutende Geschäfte.",
+        "screenshots": [
+            "piratenbucht.jpg",
+            "piratenbucht-baecker.jpg",
+            "piratenbucht-scumm-bar-1.jpg",
+            "piratenbucht-scumm-bar-1.jpg",
+            "piratenbucht-scumm-bar-1.jpg"
+        ],
+        "x": -166,
+        "y": 68,
+        "z": 181
+    },
+    {
+        "name": "Bergsiedlung",
+        "description": "Diese verträumte kleine Bergsiedlung befindet sich seit Mitte 2020 im Aufbau. Dabei werden die meisten Gebäude nicht klassisch gebaut sondern direkt in den Fels geschlagen.",
+        "screenshots": [
+            "bergsiedlung.jpg"
+        ],
+        "x": 605,
+        "y": 90,
+        "z": -146
+    },
+    {
+        "name": "Baumhaus",
+        "description": "Dieses schnuckelige Baumhaus gehört offenbar zur Villa nebenan. Die Anbauten sind etwas weitläufiger als man von einem Baumhaus erwartet.",
+        "screenshots": [
+            "baumhaus.jpg"
+        ],
+        "x": -269,
+        "y": 82,
+        "z": -53
+    }
+]

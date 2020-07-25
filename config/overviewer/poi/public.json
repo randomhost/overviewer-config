@@ -1,0 +1,140 @@
+[
+    {
+        "name": "Bibliothek",
+        "description": "Bücher wurden vor der Erfindung von eBook-Readern benutzt um Wissen zu transferieren. Eine Bibliothek ist im Wesentlichen ein Aufbewahrungsraum für Bücher da es sich bei Büchern um physische Gegenstände handelt welche derzeit nicht auf einer Speicherkarte abgelegt werden können.",
+        "screenshots": [
+            "bibliothek.jpg"
+        ],
+        "x": 64,
+        "y": 69,
+        "z": -4
+    },
+    {
+        "name": "Google+ Denkmal",
+        "description": "Frag einfach nicht.",
+        "screenshots": [
+            "google-plus.jpg"
+        ],
+        "x": -52,
+        "y": 65,
+        "z": 166
+    },
+    {
+        "name": "Lucas Arts Denkmal",
+        "description": "Das Lucas Arts Trio: Guybrush Threepwood, Henry \"Nenn' mich nicht Junior\" Jones Junior, Purpur Tentakel",
+        "screenshots": [
+            "lucasarts-denkmal.jpg"
+        ],
+        "x": 154,
+        "y": 65,
+        "z": 245
+    },
+    {
+        "name": "Schaf Denkmal",
+        "description": "Heil dem großen Schaf , Mutter von... eigentlich wissen wir gar nicht ob das große Schaf die Mutter von irgend jemandem ist, aber es gibt Gerüchte dass Leute bereits IM großen Schaf waren. Abartig",
+        "screenshots": [
+            "schaf-denkmal.jpg"
+        ],
+        "x": -172,
+        "y": 72,
+        "z": 60
+    },
+    {
+        "name": "Pyramide",
+        "description": "Über die Ursprünge der großen Pyramide ist nicht viel bekannt. Einige glauben sie wurde von einer antiken Zivilisation errichtet. Andere glauben sie wurde von Außerirdischen gebaut. Was denkst DU woher sie kommt?",
+        "screenshots": [
+            "pyramide-aussen.jpg",
+            "pyramide-innen.jpg"
+        ],
+        "x": -261,
+        "y": 62,
+        "z": -176
+    },
+    {
+        "name": "Erholungsbad",
+        "description": "Gestresst? Gönn' dir eine Pause vom harten Alltag als Minenarbeiter und nimm ein entspannendes Bad im Whirlpool, eine belebende Dusche oder genieße eine heiße reinigende Sitzung in der Sauna.",
+        "screenshots": [
+            "schwimmbad-aussen-1.jpg",
+            "schwimmbad-aussen-2.jpg",
+            "schwimmbad-aussen-3.jpg",
+            "schwimmbad-innen-1.jpg",
+            "schwimmbad-innen-2.jpg",
+            "schwimmbad-innen-3.jpg",
+            "schwimmbad-strand.jpg",
+            "schwimmbad-strand-pool.jpg"
+        ],
+        "x": -226,
+        "y": 78,
+        "z": 0
+    },
+    {
+        "name": "Random Palace",
+        "description": "Wirf einen Blick auf die erstaunliche Architektur von Random Palace, erbaut im späten... verdammt. Wir haben den Tag vergessen an dem uns DERART langweilig war.",
+        "screenshots": [
+            "random-palace.jpg"
+        ],
+        "x": 148,
+        "y": 71,
+        "z": -68
+    },
+    {
+        "name": "The Dome",
+        "description": "Wenn du denkst Pyramiden wären seltsam, warte mal bis du das hier gesehen hast. Es ist eine mysteriöse Glas-Kugel die aus dem Wasser schaut. Im Inneren läuft Lava unter römischen Ziffern in die Tiefe. In der Mitte befindet sich irgend eine Art Gerät. Was zum Teufel ist hier los?",
+        "screenshots": [
+            "dome.jpg"
+        ],
+        "x": -46,
+        "y": 72,
+        "z": 234
+    },
+    {
+        "name": "Kunst Galerie",
+        "description": "Die Kunst Galerie welche sich auf dem Berg neben Weezers Villa befindet sucht noch nach Künstlern die gerne ihre Werke dort ausstellen möchten.",
+        "screenshots": [
+            "kunstgalerie.jpg"
+        ],
+        "x": 306,
+        "y": 86,
+        "z": -74
+    },
+    {
+        "name": "Kaninchen Tempel",
+        "description": "Dies ist die heilige Stätte der Kaninchen-Anbeter. Dort werden regelmäßig magische Rituale durchgeführt welche Kaninchen überall in der Welt erscheinen lassen. Viele Kaninchen. Sehr viele Kaninchen. ZU VIELE KANINCHEN. MACH DASS ES AUFHÖRT!!! AAAAARGHHHH!!!!!!!",
+        "screenshots": [
+            "kaninchen-tempel.jpg"
+        ],
+        "x": 304,
+        "y": 69,
+        "z": 148
+    },
+    {
+        "name": "Baketball Spielfeld",
+        "description": "Wer sich sportlich betätigt hat was zu tun und bleibt gesund. Wie wäre es mit einer Runde Basketball?",
+        "screenshots": [
+            "basketball-spielfeld.jpg"
+        ],
+        "x": -334,
+        "y": 64,
+        "z": -445
+    },
+    {
+        "name": "Pferderennbahn",
+        "description": "Hier dreht sich alles um die entscheidende Frage: Wer hat die Nase vorn? Reitsport Fans kommen auf der Pferderennbahn voll auf ihre Kosten. Es darf gewettet werden.",
+        "screenshots": [
+            "pferderennbahn.jpg"
+        ],
+        "x": -129,
+        "y": 64,
+        "z": -519
+    },
+    {
+        "name": "Leuchtturm",
+        "description": "Man könnte denken dass Leuchttürme nach der Einführung von GPS weitgehend überflüssig geworden sind. Aber wenn das GPS Signal bei schlechtem Wetter mal weg ist freut man sich dann doch dass es sie noch gibt.",
+        "screenshots": [
+            "leuchtturm.jpg"
+        ],
+        "x": -14,
+        "y": 70,
+        "z": -164
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Spawn Tempel",
+        "description": "Dies ist die heilige Stätte bei der neue Abenteurer diese Welt betreten. Man sagt sich dass uralte Technologie in diesem Tempel verborgen ist welche Abenteurer in einem einzigen Augenblick an weit entfernte Orte bringen kann.",
+        "screenshots": [
+            "spawn.jpg"
+        ],
+        "x": 389,
+        "y": 132,
+        "z": -265
+    },
+    {
+        "name": "Random Park",
+        "description": "Jemand muss eine Vorliebe für Pyramiden gehabt haben, denn dieser Park ist von einer großen Glas-Pyramide umschlossen. Die Spitze wurde in Anlehnung an die alten ägypthischen Pyramiden in goldener Farbe gestrichen. Es ist wirklich nur Farbe. Es ist nicht nötig herauf zu klettern und sich selbst davon zu überzeugen. Wir möchten nicht dass sich jemand verletzt.",
+        "screenshots": [
+            "park.jpg"
+        ],
+        "x": -302,
+        "y": 65,
+        "z": 31
+    },
+    {
+        "name": "Random Beach Resort",
+        "description": "Es gibt Zeiten im Leben in denen man einfach eine Pause braucht, fern vom Alltag, an einem wunderschönen Sandstrand wo man nur das leise Rauschen der Wellen und das Rascheln der Palmen-Blätter hört, und natürlich den Kellner der freundlich fragt welchen Cocktail man gerne haben möchte.",
+        "screenshots": [
+            "random-beach-resort.jpg"
+        ],
+        "x": 69,
+        "y": 64,
+        "z": 132
+    },
+    {
+        "name": "Random Beach",
+        "description": "Ein Spaziergang am Strand, Baden im Meer, Entspannen in der Sonne, Beachvolleyball oder Shopping am Random Pier. Random Beach bietet all das und mehr.",
+        "screenshots": [
+            "random-beach.jpg"
+        ],
+        "x": -293,
+        "y": 64,
+        "z": -389
+    },
+    {
+        "name": "Kleiner Teich",
+        "description": "Am Eingang des kleines Dorfes liegt ein kleiner Teich mit einem großen Baum in der Mitte und einem kleinen Boot, welches schon seit vielen, vielen Jahren dort zu treiben scheint.",
+        "screenshots": [
+            "teich.jpg"
+        ],
+        "x": 124,
+        "y": 68,
+        "z": 28
+    },
+    {
+        "name": "Zeltplatz",
+        "description": "Was gibt es schöneres als ein Zelt auf modrig feuchtem Waldboden aufzuschlagen und am nächsten Morgen von Waldameisen geweckt zu werden die einem über das Gesicht krabbeln? Na gut. Vielleicht ist das nicht jedermanns Ding. Aber wer so etwas mag ist hier definitiv am richtigen Ort.",
+        "screenshots": [
+            "zeltplatz.jpg"
+        ],
+        "x": -131,
+        "y": 70,
+        "z": -710
+    }
+]

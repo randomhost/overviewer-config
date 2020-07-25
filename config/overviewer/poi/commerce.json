@@ -1,0 +1,134 @@
+[
+    {
+        "name": "Random Mining Inc.",
+        "description": "Random Mining Inc. ist allgemein bekannt als das erste Gebäude das jemals gebaut wurde. Daher steht es unter Denkmalschutz und soll bis zu dem Tag in dieser Welt verweilen, an dem der Nether zufriert.",
+        "screenshots": [
+            "random-mining.jpg"
+        ],
+        "x": 55,
+        "y": 68,
+        "z": 31
+    },
+    {
+        "name": "Random Office",
+        "description": "Wir sind nicht gerade stolz auf diesen eher hässlichen Büro-Wolkenkratzer aber um Unternehmen in unsere kleine verträumte Welt zu locken mussten wir ihnen Büroflächen zur Verfügung stellen. Glücklicherweise befindet sich das Erholungsbad direkt nebenan. So kann man sich nach der harten Arbeit direkt wieder entspannen.",
+        "screenshots": [
+            "buero-aussen.jpg",
+            "buero-innen-1.jpg",
+            "buero-innen-2.jpg",
+            "buero-innen-3.jpg",
+            "buero-innen-4.jpg"
+        ],
+        "x": -223,
+        "y": 70,
+        "z": 59
+    },
+    {
+        "name": "Hotel Random",
+        "description": "Da eine Villa auf einem Berg offenbar nicht genug ist beantragte der selbe Typ der sie gebaut hat noch eine Genehmigung für ein Hotel an unserem wunderschönen Strand. Eigentlich wollten wir ablehnen, aber die Marketing Abteilung war der Ansicht dass Tourismus gut für uns ist, daher...",
+        "screenshots": [
+            "hotel-random.jpg"
+        ],
+        "x": 7,
+        "y": 79,
+        "z": -60
+    },
+    {
+        "name": "I-Tower",
+        "description": "Der I-Tower war einst das höchste Gebäude in dieser Welt. Er scheint bis heute nicht ganz fertig gestellt zu sein, wenn man sich einmal die vielen seltsamen Redstone Konstruktionen in der Nähe ansieht. Wir denken dass dort jemand versucht hat einen Aufzug zu bauen, der leider nie fertig wurde.",
+        "screenshots": [
+            "itower.jpg",
+            "itower-aussicht.jpg"
+        ],
+        "x": -225,
+        "y": 64,
+        "z": -488
+    },
+    {
+        "name": "Windturbine",
+        "description": "Wir lieben die Natur. Daher leisten wir von Random Energy Services Inc. unseren Beitrag zum Klimaschutz, mit Öko-Strom aus Windkraftwerken wie diesem hier.",
+        "screenshots": [
+            "windturbine.jpg"
+        ],
+        "x": -226,
+        "y": 72,
+        "z": -660
+    },
+    {
+        "name": "Pumpstation 1",
+        "description": "Einen Bergbau Betrieb zu betreiben bedeutet auch Verantwortung zu übernehmen. Daher sorgen wir von Random Mining Inc. mit Pumpstationen wie dieser dafür dass die Bewohner im Einzugsgebiet unserer Bergbauoperationen trockene Füße behalten.",
+        "screenshots": [
+            "pumpstation-aussen.jpg",
+            "pumpstation-innen.jpg"
+        ],
+        "x": -323,
+        "y": 63,
+        "z": -554
+    },
+    {
+        "name": "Tankstelle",
+        "description": "Mit den zertifizierten schadstoffarmen Krafstoffen von Random Mining Inc. wissen Sie stets genau was in ihren Tank kommt und tun dabei noch etwas für die Umwelt. Mit Random Mining Inc. in die automobile Zukunft.",
+        "screenshots": [
+            "tankstelle.jpg"
+        ],
+        "x": -385,
+        "y": 64,
+        "z": -485
+    },
+    {
+        "name": "Wasseraufbereitung",
+        "description": "Unter Einhaltung moderner Industriestandards und strenger Naturschutzvorschriften sorgt Random Mining Disposal Services für eine sichere Aufbereitung von Schmutzwasser in allen Bereichen.",
+        "screenshots": [
+            "wasseraufbereitung.jpg",
+            "wasseraufbereitung-buero.jpg",
+            "wasseraufbereitung-kanalisation.jpg"
+        ],
+        "x": -460,
+        "y": 65,
+        "z": -459
+    },
+    {
+        "name": "Fastfood Restaurant",
+        "description": "Für den kleinen Hunger zwischendurch bietet dieses Fastfood Restaurant direkt an der Hauptstraße günstige Gerichte für jung und alt.",
+        "screenshots": [
+            "fastfood-aussen.jpg",
+            "fastfood-drive-in.jpg",
+            "fastfood-innen.jpg"
+        ],
+        "x": -408,
+        "y": 64,
+        "z": -458
+    },
+    {
+        "name": "Bauernhof und Weingut",
+        "description": "Als zertifizierter Bio-Betrieb erhalten sie bei uns Gemüse, Eier, Fleisch-Produkte und alkoholische Getränke aus garantiert ökologischer Produktion.",
+        "screenshots": [
+            "bauer.jpg",
+            "bauer-weinberg.jpg"
+        ],
+        "x": -374,
+        "y": 63,
+        "z": -614
+    },
+    {
+        "name": "Telekommunikationsunternehmen",
+        "description": "Dieser Standort eines Telekommunikationsunternehmens beherbergt unter anderem den örtlichen Fernmeldeturm.",
+        "screenshots": [
+            "telekom.jpg"
+        ],
+        "x": -397,
+        "y": 63,
+        "z": -515
+    },
+    {
+        "name": "Fernmeldeturm",
+        "description": "Im inhaltlich innovativen Inneren dieses famos formidablen Fernmeldeturms verbirgt sich tendenziell teure Technik und ein relativ renommiertes Restaurant.",
+        "screenshots": [
+            "fernmeldeturm-aussen.jpg",
+            "fernmeldeturm-innen.jpg"
+        ],
+        "x": -405,
+        "y": 208,
+        "z": -547
+    }
+]

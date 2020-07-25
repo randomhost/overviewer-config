@@ -1,0 +1,113 @@
+[
+    {
+        "name": "Kunst Galerie",
+        "description": "Als Teil der darüber liegenden Kunst Galerie ist dieser Bahnhof sehr kompakt und im gleichen Design gehalten.",
+        "screenshots": [
+            "ubahn-galerie.jpg"
+        ],
+        "x": 306,
+        "y": 80,
+        "z": -48
+    },
+    {
+        "name": "Weezers Villa",
+        "description": "Als Bestandteil der Villa welche er mit dem Schienennetz verbindet wurde dieser Unterwasser-Bahnhof aus edlem Quarz und dicken Glasblöcken gebaut.",
+        "screenshots": [
+            "ubahn-weezer.jpg"
+        ],
+        "x": 213,
+        "y": 62,
+        "z": 27
+    },
+    {
+        "name": "Random Mining Inc.",
+        "description": "Heute ein Durchgangsbahnhof war diese Station früher der Ausgangspunkt der ersten Bahnlinie. Das heutige Minenstollen Motiv wurde erst viel später nachgerüstet.",
+        "screenshots": [
+            "ubahn-random-mining.jpg"
+        ],
+        "x": 19,
+        "y": 67,
+        "z": 28
+    },
+    {
+        "name": "Erholungsbad / Park",
+        "description": "In Anlehnung an den oberirdischen Außenposten von Jarkkos Insel wurde dieser Bahnhof vollständig in Backstein-Optik gestaltet. Früher war dies der Endpunkt der Bahnlinie. Heute ist er ein Knotenpunkt an dem Nord- und Südlinie zusammen treffen.",
+        "screenshots": [
+            "ubahn-park-1.jpg",
+            "ubahn-park-2.jpg"
+        ],
+        "x": -189,
+        "y": 68,
+        "z": 28
+    },
+    {
+        "name": "Pyramide",
+        "description": "Als einer der wenigen oberirdischen Bahnhöfe greift dieser Bahnhof das antike ägypthische Design der umliegenden Wüstenbauwerke auf. Er ist der letzte Bahnhof der zur \"alten Welt\" gezählt wird und stellt aktuell die einzige Bahnverbindung zur \"neuen Welt\" her.",
+        "screenshots": [
+            "ubahn-pyramide.jpg"
+        ],
+        "x": -274,
+        "y": 67,
+        "z": -102
+    },
+    {
+        "name": "i-Tower",
+        "description": "Als erster U-Bahnhof der \"neuen Welt\" stellt dieser Bahnhof die derzeit einzige Anbindung an die \"alte Welt\" her. Außerdem stellt er den Übergang zum oberirdischen Teil des Streckennetzes der \"neuen Welt\" dar.",
+        "screenshots": [
+            "ubahn-itower.jpg"
+        ],
+        "x": -306,
+        "y": 61,
+        "z": -442
+    },
+    {
+        "name": "Militärbasis",
+        "description": "Dieser oberirdische Kopfbahnhof stellt aktuell das Ende des Streckennetzes der neuen Welt dar. Zukünftige Ausbaupläne sehen jedoch eine Fortführung des Streckennetzes in Richtung Norden vor.",
+        "screenshots": [
+            "ubahn-militaerbasis.jpg"
+        ],
+        "x": -445,
+        "y": 64,
+        "z": -527
+    },
+    {
+        "name": "Piratensiedlung",
+        "description": "Im Einklang mit der Piratensiedlung welche er anbindet wurde dieser Bahnhof vorwiegend mit dunklem Holz gestaltet. Die Piratenflagge darf natürlich auch nicht fehlen.",
+        "screenshots": [
+            "ubahn-piraten.jpg"
+        ],
+        "x": -218,
+        "y": 70,
+        "z": 161
+    },
+    {
+        "name": "Dome",
+        "description": "Dieser improvisierte, temporäre Bahnhof dient der provisorischen Bahn-Anbindung des \"Dome\" bis über dessen weitere Erschließung entschieden wurde.",
+        "screenshots": [
+            "ubahn-dome.jpg"
+        ],
+        "x": -59,
+        "y": 48,
+        "z": 211
+    },
+    {
+        "name": "Ostgebirge",
+        "description": "Dieser Kopfbahnhof bildet das östliche Ende der Haupt-Bahnlinie, gelegen inmitten einer wunderschönen Berglandschaft.",
+        "screenshots": [
+            "ubahn-ostgebirge.jpg"
+        ],
+        "x": 642,
+        "y": 73,
+        "z": -131
+    },
+    {
+        "name": "Spawnpunkt",
+        "description": "Dieser Bahnhof in direkter Nähe des Spawnpunktes führt neue Spieler in das bevorzugte Transportmittel der Welt ein.",
+        "screenshots": [
+            "ubahn-spawnpunkt.jpg"
+        ],
+        "x": 319,
+        "y": 81,
+        "z": -224
+    }
+]
