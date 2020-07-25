@@ -515,4 +515,13 @@ manualpois = [
         'description':'Dieser Kopfbahnhof bildet das östliche Ende der Haupt-Bahnlinie, gelegen inmitten einer wunderschönen Berglandschaft.',
         'screenshots':['ubahn-ostgebirge.jpg']
     },
+    {
+        'id':'Subway',
+        'x':319,
+        'y':81,
+        'z':-224,
+        'name':'Spawnpunkt',
+        'description':'Dieser Bahnhof in direkter Nähe des Spawnpunktes führt neue Spieler in das bevorzugte Transportmittel der Welt ein.',
+        'screenshots':['ubahn-spawnpunkt.jpg']
+    },
 ]
