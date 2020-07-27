@@ -72,8 +72,11 @@ if(file_exists($jsFile)) {
             </div>
             <div class="modal-body">
                 <div id="screenshotCarouselControls" class="carousel slide carousel-fade" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li id="carousel-indicator-template" data-target="#screenshotCarouselControls" data-slide-to=""></li>
+                    </ol>
                     <div class="carousel-inner">
-                        <div id="carousel-template" class="carousel-item">
+                        <div id="carousel-template" class="carousel-item" data-interval="10000">
                             <img class="screenshot-image d-block w-100" src="images/logo.png" alt="">
                         </div>
                     </div>

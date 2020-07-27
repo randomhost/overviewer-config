@@ -2,11 +2,15 @@ $(document).ready(function () {
 
     const screenshotModal = $('#screenshotModal');
     const carouselDom = screenshotModal.find('#carousel-template');
+    const carouselIndicatorDom = screenshotModal.find('#carousel-indicator-template');
     const carouselTemplate = carouselDom.clone();
+    const carouselIndicatorTemplate = carouselIndicatorDom.clone();
 
     carouselDom.remove();
-    carouselTemplate.find()
+    carouselIndicatorDom.remove();
+
     carouselTemplate.removeAttr('id');
+    carouselIndicatorTemplate.removeAttr('id');
 
     // Sort stats by key
     function sortStats(unordered)
@@ -34,17 +38,26 @@ $(document).ready(function () {
         modal.find('#screenshot-description').text(description);
 
         let carouselContainer = modal.find('#screenshotCarouselControls .carousel-inner');
+        let carouselIndicatorContainer = modal.find('#screenshotCarouselControls .carousel-indicators');
+
         carouselContainer.empty();
+        carouselIndicatorContainer.empty();
+
         for (let image in images) {
             if (images.hasOwnProperty(image)) {
                 let carouselItem = carouselTemplate.clone();
-                carouselItem.find('img.screenshot-image').attr('src', 'images/screenshots/' + images[image])
-                if(images[image] === activeImage) {
-                    carouselItem.addClass('active')
-                }
-                carouselContainer.append(carouselItem)
-            }
+                let carouselIndicatorItem = carouselIndicatorTemplate.clone();
 
+                carouselItem.find('img.screenshot-image').attr('src', 'images/screenshots/' + images[image])
+                if (images[image] === activeImage) {
+                    carouselItem.addClass('active');
+                    carouselIndicatorItem.addClass('active');
+                }
+                carouselIndicatorItem.attr('data-slide-to', image);
+
+                carouselContainer.append(carouselItem);
+                carouselIndicatorContainer.append(carouselIndicatorItem);
+            }
         }
     })
 
