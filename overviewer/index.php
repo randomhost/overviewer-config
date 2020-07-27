@@ -1,16 +1,22 @@
 <?php
 setlocale(LC_TIME, 'de_DE.UTF-8');
 $indexFile = 'index.html';
-$update = 0;
+$indexUpdate = 0;
 if(file_exists($indexFile)) {
-    $update = filemtime($indexFile);
+    $indexUpdate = filemtime($indexFile);
+}
+
+$jsFile = 'js/custom.min.js';
+$jsUpdate = 0;
+if(file_exists($jsFile)) {
+    $jsUpdate = filemtime($jsFile);
 }
 ?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <title>Minecraft Map - Random-Host.tv</title>
     <link rel="stylesheet" type="text/css" href="leaflet.css">
     <link rel="stylesheet" type="text/css" href="overviewer.css">
@@ -30,7 +36,7 @@ if(file_exists($indexFile)) {
         <div class="navbar-nav">
             <span class="navbar-text">
                 <i class="da da-clock-o" aria-hidden="true"></i>
-                Stand: <?= strftime("%A %d.%m.%Y, %H:%M:%S", $update) ?>
+                Stand: <?= strftime("%A %d.%m.%Y, %H:%M:%S", $indexUpdate) ?>
             </span>
             <a class="btn btn-secondary ml-2" title="Mehr über diese Karte erfahren" href="#" data-toggle="modal" data-target="#infoModal">
                 <i class="da da-info-circle" aria-hidden="true"></i>
@@ -65,10 +71,22 @@ if(file_exists($indexFile)) {
                 </button>
             </div>
             <div class="modal-body">
-                <figure class="figure">
-                    <img id="screenshot-image" src="images/logo.png" alt="" class="figure-img img-fluid rounded">
-                    <figcaption class="figure-caption" id="screenshot-description"></figcaption>
-                </figure>
+                <div id="screenshotCarouselControls" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div id="carousel-template" class="carousel-item">
+                            <img class="screenshot-image d-block w-100" src="images/logo.png" alt="">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#screenshotCarouselControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Vorheriges</span>
+                    </a>
+                    <a class="carousel-control-next" href="#screenshotCarouselControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Nächstes</span>
+                    </a>
+                </div>
+                <small class="text-muted" id="screenshot-description"></small>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -218,7 +236,7 @@ if(file_exists($indexFile)) {
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/custom.min.js"></script>
+<script src="js/custom.min.js?_nc=<?= $jsUpdate ?>"></script>
 
 <script type="text/javascript" src="overviewerConfig.js"></script>
 <script type="text/javascript" src="overviewer.js"></script>

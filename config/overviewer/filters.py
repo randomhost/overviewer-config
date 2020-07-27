@@ -406,14 +406,14 @@ def filterBuilder(id, category):
                 screenshots = []
                 for screenshot in poi['screenshots']:
                     screenshots.append('''
-                        <a href="#" data-toggle="modal" data-target="#screenshotModal" data-image="images/screenshots/{screenshot}"
+                        <a href="#" data-toggle="modal" data-target="#screenshotModal" data-image="{screenshot}" data-images="{screenshots}"
                                     data-icon="icons/marker_{icon}.png" data-title="{title}" data-description="{description}">
                             <div class="screenshot-container" title="Klicken um herein zu zoomen">
                                 <img src="images/screenshots/{screenshot}" alt="" class="img-thumbnail">
                                 <i aria-hidden="true" class="da da-search-plus zoom-icon"></i>
                             </div>
                         </a>
-                    '''.format(screenshot=screenshot,title=html.escape(poi['name']),description=html.escape(poi['description']),icon=id.lower())
+                    '''.format(screenshot=screenshot,title=html.escape(poi['name']),description=html.escape(poi['description']),icon=id.lower(),screenshots=html.escape(json.dumps(poi['screenshots'])))
                     )
                 else:
                     screenshotContainerHtml = '''

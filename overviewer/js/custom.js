@@ -1,5 +1,13 @@
 $(document).ready(function () {
 
+    const screenshotModal = $('#screenshotModal');
+    const carouselDom = screenshotModal.find('#carousel-template');
+    const carouselTemplate = carouselDom.clone();
+
+    carouselDom.remove();
+    carouselTemplate.find()
+    carouselTemplate.removeAttr('id');
+
     // Sort stats by key
     function sortStats(unordered)
     {
@@ -12,9 +20,10 @@ $(document).ready(function () {
     }
 
     // Screenshot Modal
-    $('#screenshotModal').on('show.bs.modal', function (event) {
+    screenshotModal.on('show.bs.modal', function (event) {
         let link = $(event.relatedTarget);
-        let image = link.data('image');
+        let activeImage = link.data('image');
+        let images = link.data('images');
         let icon = link.data('icon');
         let title = link.data('title');
         let description = link.data('description');
@@ -23,7 +32,20 @@ $(document).ready(function () {
         modal.find('#screenshot-title').text(title);
         modal.find('#screenshot-icon').attr('src', icon);
         modal.find('#screenshot-description').text(description);
-        modal.find('img#screenshot-image').attr('src', image)
+
+        let carouselContainer = modal.find('#screenshotCarouselControls .carousel-inner');
+        carouselContainer.empty();
+        for (let image in images) {
+            if (images.hasOwnProperty(image)) {
+                let carouselItem = carouselTemplate.clone();
+                carouselItem.find('img.screenshot-image').attr('src', 'images/screenshots/' + images[image])
+                if(images[image] === activeImage) {
+                    carouselItem.addClass('active')
+                }
+                carouselContainer.append(carouselItem)
+            }
+
+        }
     })
 
     // Stats Modal
@@ -78,7 +100,8 @@ $(document).ready(function () {
                 itemsBody += '<td class="text-center">' + stats['items']['items'][item]['actions']['broken'] + '</td>';
                 itemsBody += '<td class="text-center">' + stats['items']['items'][item]['actions']['crafted'] + '</td>';
                 itemsBody += '<td class="text-center">' + stats['items']['items'][item]['actions']['used'] + '</td>';
-                itemsBody += '<td class="text-center">' + stats['items']['items'][item]['actions']['picked_up'] + '</td>';
+                itemsBody += '<td class="text-center">' + stats['items']['items'][item]['actions']['picked_up']
+                    + '</td>';
                 itemsBody += '<td class="text-center">' + stats['items']['items'][item]['actions']['dropped'] + '</td>';
                 itemsBody += '</tr>';
             }
