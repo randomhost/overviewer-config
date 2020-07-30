@@ -79,7 +79,7 @@ For general information on how to use Overviewer, please refer to the [Overviewe
 * `overviewer/fonts/`  
   Custom IcoMoon font based on FontAwesome 4 for the Overviewer map page.
   
-* `overviewer/icons/`  
+* `overviewer/markers/`  
   Custom marker icons.
   
 * `overviewer/images/`  
