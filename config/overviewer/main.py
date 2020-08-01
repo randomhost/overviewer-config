@@ -25,6 +25,7 @@ defaultzoom = 5
 showlocationmarker = False
 showspawn = False
 processes  = 3
+center = [0, 64, 0]
 
 from manualpois import *
 from filters import *
@@ -67,22 +68,22 @@ renders['randomhost_cave'] = {
 
 renders['ramdomhost_spawnoverlay'] = {
     'world': 'Random World',
-    'rendermode': [ClearBase(), SpawnOverlay()],
     'title': 'Monster-Spawn',
+    'rendermode': [ClearBase(), SpawnOverlay()],
     'overlay': ['randomhost_day','randomhost_night']
 }
 
 renders['ramdomhost_biomeoverlay'] = {
     'world': 'Random World',
-    'rendermode': [ClearBase(), BiomeOverlay()],
     'title': 'Biome',
+    'rendermode': [ClearBase(), BiomeOverlay()],
     'overlay': ['randomhost_day','randomhost_night']
 }
 
 renders['ramdomhost_depthoverlay'] = {
     'world': 'Random World',
-    'rendermode': [Base(), EdgeLines(), Cave(only_lit=True), DepthTinting()],
     'title': 'Tiefe',
+    'rendermode': [Base(), EdgeLines(), Cave(only_lit=True), DepthTinting()],
     'overlay': ['randomhost_cave']
 }
 
