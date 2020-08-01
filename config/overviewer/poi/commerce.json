@@ -121,14 +121,13 @@
         "z": -515
     },
     {
-        "name": "Fernmeldeturm",
-        "description": "Im inhaltlich innovativen Inneren dieses famos formidablen Fernmeldeturms verbirgt sich tendenziell teure Technik und ein relativ renommiertes Restaurant.",
+        "name": "Lebensmitteleinzelhandel",
+        "description": "Hier kann man seinen Wocheneinkauf erledigen. Ähnlichkeiten mir real existierenden Einzelhandelsketten sind totaaaaal zufällig.",
         "screenshots": [
-            "fernmeldeturm-aussen.jpg",
-            "fernmeldeturm-innen.jpg"
+            "lebensmitteleinzelhandel.jpg"
         ],
-        "x": -405,
-        "y": 208,
-        "z": -547
+        "x": -469,
+        "y": 75,
+        "z": -715
     }
 ]
