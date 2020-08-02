@@ -239,8 +239,9 @@ def loadPlayerStats(poi):
                     for key in decodedStats['stats']['minecraft:custom']:
                         translationKey='stat.' + key.replace(':', '.')
                         translation=decodedTranslations[translationKey]
+                        sortKey=translation + '_' + translationKey
 
-                        stats['general']['actions'][translationKey] = {
+                        stats['general']['actions'][sortKey] = {
                             'name': translation,
                             'value': formatGeneralStats(key, decodedStats['stats']['minecraft:custom'][key])
                         }
@@ -250,18 +251,20 @@ def loadPlayerStats(poi):
                     for key in decodedStats['stats']['minecraft:mined']:
                         translationKey='block.' + key.replace(':', '.')
                         translation=decodedTranslations[translationKey]
-                        initItem(stats, key, translation)
+                        sortKey=translation + '_' + translationKey
+                        initItem(stats, sortKey, translation)
 
-                        stats['items']['items'][key]['actions']['mined'] = decodedStats['stats']['minecraft:mined'][key]
+                        stats['items']['items'][sortKey]['actions']['mined'] = decodedStats['stats']['minecraft:mined'][key]
 
                 # item stats: broken
                 if 'minecraft:broken' in decodedStats['stats']:
                     for key in decodedStats['stats']['minecraft:broken']:
                         translationKey='item.' + key.replace(':', '.')
                         translation=decodedTranslations[translationKey]
-                        initItem(stats, key, translation)
+                        sortKey=translation + '_' + translationKey
+                        initItem(stats, sortKey, translation)
 
-                        stats['items']['items'][key]['actions']['broken'] = decodedStats['stats']['minecraft:broken'][key]
+                        stats['items']['items'][sortKey]['actions']['broken'] = decodedStats['stats']['minecraft:broken'][key]
 
                 # item stats: crafted
                 if 'minecraft:crafted' in decodedStats['stats']:
@@ -272,9 +275,10 @@ def loadPlayerStats(poi):
                         except KeyError:
                             translationKey='item.' + key.replace(':', '.')
                             translation=decodedTranslations[translationKey]
-                        initItem(stats, key, translation)
+                        sortKey=translation + '_' + translationKey
+                        initItem(stats, sortKey, translation)
 
-                        stats['items']['items'][key]['actions']['crafted'] = decodedStats['stats']['minecraft:crafted'][key]
+                        stats['items']['items'][sortKey]['actions']['crafted'] = decodedStats['stats']['minecraft:crafted'][key]
 
                 # item stats: used
                 if 'minecraft:used' in decodedStats['stats']:
@@ -285,9 +289,10 @@ def loadPlayerStats(poi):
                         except KeyError:
                             translationKey='item.' + key.replace(':', '.')
                             translation=decodedTranslations[translationKey]
-                        initItem(stats, key, translation)
+                        sortKey=translation + '_' + translationKey
+                        initItem(stats, sortKey, translation)
 
-                        stats['items']['items'][key]['actions']['used'] = decodedStats['stats']['minecraft:used'][key]
+                        stats['items']['items'][sortKey]['actions']['used'] = decodedStats['stats']['minecraft:used'][key]
 
                 # item stats: picked up
                 if 'minecraft:picked_up' in decodedStats['stats']:
@@ -298,9 +303,10 @@ def loadPlayerStats(poi):
                         except KeyError:
                             translationKey='item.' + key.replace(':', '.')
                             translation=decodedTranslations[translationKey]
-                        initItem(stats, key, translation)
+                        sortKey=translation + '_' + translationKey
+                        initItem(stats, sortKey, translation)
 
-                        stats['items']['items'][key]['actions']['picked_up'] = decodedStats['stats']['minecraft:picked_up'][key]
+                        stats['items']['items'][sortKey]['actions']['picked_up'] = decodedStats['stats']['minecraft:picked_up'][key]
 
                 # item stats: dropped
                 if 'minecraft:dropped' in decodedStats['stats']:
@@ -311,27 +317,30 @@ def loadPlayerStats(poi):
                         except KeyError:
                             translationKey='item.' + key.replace(':', '.')
                             translation=decodedTranslations[translationKey]
-                        initItem(stats, key, translation)
+                        sortKey=translation + '_' + translationKey
+                        initItem(stats, sortKey, translation)
 
-                        stats['items']['items'][key]['actions']['dropped'] = decodedStats['stats']['minecraft:dropped'][key]
+                        stats['items']['items'][sortKey]['actions']['dropped'] = decodedStats['stats']['minecraft:dropped'][key]
 
                 # mob stats: killed
                 if 'minecraft:killed' in decodedStats['stats']:
                     for key in decodedStats['stats']['minecraft:killed']:
                         translationKey='entity.' + key.replace(':', '.')
                         translation=decodedTranslations[translationKey]
-                        initMob(stats, key, translation)
+                        sortKey=translation + '_' + translationKey
+                        initMob(stats, sortKey, translation)
 
-                        stats['mobs']['mobs'][key]['actions']['killed'] = decodedStats['stats']['minecraft:killed'][key]
+                        stats['mobs']['mobs'][sortKey]['actions']['killed'] = decodedStats['stats']['minecraft:killed'][key]
 
                 # mob stats: killed by
                 if 'minecraft:killed_by' in decodedStats['stats']:
                     for key in decodedStats['stats']['minecraft:killed_by']:
                         translationKey='entity.' + key.replace(':', '.')
                         translation=decodedTranslations[translationKey]
-                        initMob(stats, key, translation)
+                        sortKey=translation + '_' + translationKey
+                        initMob(stats, sortKey, translation)
 
-                        stats['mobs']['mobs'][key]['actions']['killed_by'] = decodedStats['stats']['minecraft:killed_by'][key]
+                        stats['mobs']['mobs'][sortKey]['actions']['killed_by'] = decodedStats['stats']['minecraft:killed_by'][key]
             else:
                 stats={}
     else:
