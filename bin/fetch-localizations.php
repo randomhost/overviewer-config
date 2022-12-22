@@ -2,59 +2,55 @@
 
 namespace RandomHost\Minecraft\Overviewer;
 
-use DateTime;
-use Exception;
-use RuntimeException;
-use stdClass;
-
 /**
  * Retrieves localization assets from Mojang.
  *
  * @author    Ch'Ih-Yu <chi-yu@web.de>
  * @copyright 2020 Random-Host.tv
  * @license   https://opensource.org/licenses/BSD-3-Clause BSD License (3 Clause)
- * @link      https://random-host.tv
+ *
+ * @see https://github.random-host.tv
  */
 class L10n
 {
     /**
      * URL to download the "version_manifest.json" file from.
      */
-    const VERSION_MANIFEST_URL = 'https://launchermeta.mojang.com/mc/game/version_manifest.json';
+    private const VERSION_MANIFEST_URL = 'https://launchermeta.mojang.com/mc/game/version_manifest.json';
 
     /**
      * Path prefix for identifying localization file assets.
      */
-    const L10N_ASSET_FILE_PREFIX = 'minecraft/lang/';
+    private const L10N_ASSET_FILE_PREFIX = 'minecraft/lang/';
 
     /**
      * Pattern for asset file download URLs.
      */
-    const ASSET_URL_PATTERN = 'https://resources.download.minecraft.net/%s/%s';
+    private const ASSET_URL_PATTERN = 'https://resources.download.minecraft.net/%s/%s';
 
     /**
      * Local directory for caching language assets.
      */
-    const LOCALIZATION_CACHE_DIR = __DIR__.'/../.l10n_cache';
+    private const LOCALIZATION_CACHE_DIR = __DIR__.'/../.l10n_cache';
 
     /**
      * Decoded version manifest data.
      *
-     * @var stdClass
+     * @var \stdClass
      */
     private $versionManifest;
 
     /**
      * Decoded version data.
      *
-     * @var stdClass
+     * @var \stdClass
      */
     private $versionData;
 
     /**
      * Decoded asset index.
      *
-     * @var stdClass
+     * @var \stdClass
      */
     private $assetIndex;
 
@@ -77,14 +73,16 @@ class L10n
                 ->loadVersionManifest()
                 ->loadVersionData()
                 ->loadAssetIndex()
-                ->downloadLocalizationAssets();
+                ->downloadLocalizationAssets()
+            ;
 
             $this->status('Done.');
 
             exit(0);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->status('', true, false);
             $this->status(sprintf('Error: %s', $e->getMessage()));
+
             exit(1);
         }
     }
@@ -101,18 +99,24 @@ class L10n
             || array_key_exists('help', $options)
         ) {
             $this->printUsageHint(true);
+
             exit(0);
         }
 
         switch (true) {
             case array_key_exists('version', $options):
                 $version = $options['version'];
+
                 break;
+
             case array_key_exists('v', $options):
                 $version = $options['v'];
+
                 break;
+
             default:
                 $this->printUsageHint();
+
                 exit(1);
         }
 
@@ -120,6 +124,7 @@ class L10n
             && !preg_match('#^\d+w\d+a$#', $version)) {
             $this->status("Invalid version number \"{$version}\"", true, false);
             $this->printUsageHint();
+
             exit(1);
         }
 
@@ -135,7 +140,7 @@ class L10n
      *
      * @return $this
      *
-     * @throws RuntimeException in case the cache directory does not exist or is not accessible.
+     * @throws \RuntimeException in case the cache directory does not exist or is not accessible.
      */
     private function checkCacheDir(): self
     {
@@ -145,7 +150,7 @@ class L10n
             || !is_writable(self::LOCALIZATION_CACHE_DIR)
             || !is_readable(self::LOCALIZATION_CACHE_DIR)
         ) {
-            throw new RuntimeException(
+            throw new \RuntimeException(
                 'Localization cache directory "'.self::LOCALIZATION_CACHE_DIR.'" not found or not accessible'
             );
         }
@@ -166,16 +171,16 @@ class L10n
 
         $versionManifest = file_get_contents(self::VERSION_MANIFEST_URL);
         if (false === $versionManifest) {
-            throw new RuntimeException('Failed to fetch version manifest from Mojang');
+            throw new \RuntimeException('Failed to fetch version manifest from Mojang');
         }
 
         $versionManifest = json_decode($versionManifest);
         if (is_null($versionManifest)) {
-            throw new RuntimeException('Failed to decode version manifest');
+            throw new \RuntimeException('Failed to decode version manifest');
         }
 
         if (!property_exists($versionManifest, 'versions')) {
-            throw new RuntimeException('Version manifest doesn\'t include any versions');
+            throw new \RuntimeException('Version manifest doesn\'t include any versions');
         }
 
         $this->versionManifest = $versionManifest;
@@ -196,38 +201,39 @@ class L10n
 
         foreach ($this->versionManifest->versions as $versionData) {
             if (!property_exists($versionData, 'id')) {
-                throw new RuntimeException('Version data doesn\'t include "id" key');
+                throw new \RuntimeException('Version data doesn\'t include "id" key');
             }
             if (!property_exists($versionData, 'url')) {
-                throw new RuntimeException('Version data doesn\'t include "url" key');
+                throw new \RuntimeException('Version data doesn\'t include "url" key');
             }
 
             if ($versionData->id === $this->version) {
                 $url = $versionData->url;
+
                 break;
             }
         }
 
         if (!isset($url)) {
-            throw new RuntimeException("Version \"{$this->version}\"not found in version manifest");
+            throw new \RuntimeException("Version \"{$this->version}\"not found in version manifest");
         }
 
         $versionData = file_get_contents($url);
         if (false === $versionData) {
-            throw new RuntimeException('Failed to fetch version data from Mojang');
+            throw new \RuntimeException('Failed to fetch version data from Mojang');
         }
 
         $versionData = json_decode($versionData);
         if (is_null($versionData)) {
-            throw new RuntimeException('Failed to decode version data');
+            throw new \RuntimeException('Failed to decode version data');
         }
 
         if (!property_exists($versionData, 'assetIndex')) {
-            throw new RuntimeException('Version data doesn\'t include "assetIndex" key');
+            throw new \RuntimeException('Version data doesn\'t include "assetIndex" key');
         }
 
         if (!property_exists($versionData->assetIndex, 'url')) {
-            throw new RuntimeException('Asset index data doesn\'t include "url" key');
+            throw new \RuntimeException('Asset index data doesn\'t include "url" key');
         }
 
         $this->versionData = $versionData;
@@ -248,16 +254,16 @@ class L10n
 
         $assetIndex = file_get_contents($this->versionData->assetIndex->url);
         if (false === $assetIndex) {
-            throw new RuntimeException('Failed to fetch asset index from Mojang');
+            throw new \RuntimeException('Failed to fetch asset index from Mojang');
         }
 
         $assetIndex = json_decode($assetIndex);
         if (is_null($assetIndex)) {
-            throw new RuntimeException('Failed to decode asset index data');
+            throw new \RuntimeException('Failed to decode asset index data');
         }
 
         if (!property_exists($assetIndex, 'objects')) {
-            throw new RuntimeException('Asset index doesn\'t include "objects" key');
+            throw new \RuntimeException('Asset index doesn\'t include "objects" key');
         }
 
         $this->assetIndex = $assetIndex;
@@ -291,11 +297,11 @@ class L10n
 
             $langFile = file_get_contents($fileUrl);
             if (false === $langFile) {
-                throw new RuntimeException("Failed to fetch asset \"{$fileUrl}\" from Mojang");
+                throw new \RuntimeException("Failed to fetch asset \"{$fileUrl}\" from Mojang");
             }
 
             if (false === file_put_contents($langCacheFile, $langFile)) {
-                throw new RuntimeException('Failed to save downloaded asset to disk');
+                throw new \RuntimeException('Failed to save downloaded asset to disk');
             }
 
             $this->status('ok.', true, false);
@@ -315,7 +321,7 @@ class L10n
      */
     private function status(string $message, bool $linebreak = true, bool $timestamp = true): self
     {
-        $dateTime = new DateTime();
+        $dateTime = new \DateTime();
 
         echo sprintf(
             '%s%s%s',
@@ -336,26 +342,25 @@ class L10n
     {
         $fileName = basename(__FILE__);
         $output = '';
-        if($withIntro) {
-            $output .= <<< EOT
-This script downloads Minecraft localization assets from Mojang, ready to be used to localize
-player statistics shown within Minecraft Overviewer's "last known player location" type POIs.
+        if ($withIntro) {
+            $output .= <<< 'EOT'
+                This script downloads Minecraft localization assets from Mojang, ready to be used to localize
+                player statistics shown within Minecraft Overviewer's "last known player location" type POIs.
 
 
-EOT;
+                EOT;
         }
 
         $output .= <<< EOT
-Usage: {$fileName} [OPTIONS] --version=<version>
+            Usage: {$fileName} [OPTIONS] --version=<version>
 
-Options
--h, --help              Shows this help.
--v, --version=<version> Specifies the Minecraft release version or snapshot name to download
-                        translation assets for (e.g. "1.15", "1.16.1", "20w06a", etc.).
-EOT;
+            Options
+            -h, --help              Shows this help.
+            -v, --version=<version> Specifies the Minecraft release version or snapshot name to download
+                                    translation assets for (e.g. "1.15", "1.16.1", "20w06a", etc.).
+            EOT;
         $this->status($output, true, false);
     }
 }
 
-$penis = new L10n();
-$penis->run();
+(new L10n())->run();
