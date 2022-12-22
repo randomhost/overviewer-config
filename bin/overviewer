@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# init vars
-pid="$$"
-niceness=19
+# config
 overviewerPath="/usr/bin/overviewer.py"
 pidfile="/home/minecraft/overviewer.pid"
 configfile="/home/minecraft/config/overviewer/main.py"
+niceness=19
+initScriptPath="/home/minecraft/vanilla/minecraft-init/minecraft"
+
+# init vars
+pid="$$"
 poionly=false
 force=''
 check='--check-tiles'
@@ -67,7 +70,16 @@ run() {
         nice -n ${niceness} ${overviewerPath} --config="${configfile}" --genpoi
 
         if [[ "${poionly}" = false ]]; then
+            if [[ -f ${initScriptPath} ]]; then
+                ${initScriptPath} save-off
+                sleep 5s
+                ${initScriptPath} say "§7Aktualisiere Online-Karte...§r"
+            fi
             nice -n ${niceness} ${overviewerPath} --config="${configfile}" ${check} ${force}
+            if [[ -f ${initScriptPath} ]]; then
+                ${initScriptPath} say "§7Karte aktualisiert.§r"
+                ${initScriptPath} save-on
+            fi
         fi
 
         rm ${pidfile}
