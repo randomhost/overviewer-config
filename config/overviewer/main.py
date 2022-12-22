@@ -12,7 +12,7 @@ from .observer import JSObserver
 # General Options
 ####################################################################################################
 
-outputdir = '/home/minecraft/overviewer'
+outputdir = '/var/www/sites/tv.random-host.minecraft/src/www/overviewer'
 texturepath = '/home/minecraft/resourcepacks/chromahills'
 
 ####################################################################################################
