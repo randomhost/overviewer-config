@@ -23,6 +23,7 @@ if(file_exists($jsFile)) {
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/custom.min.css">
     <link rel="stylesheet" type="text/css" href="css/dingawesome.min.css">
+    <link rel="shortcut icon" href="/favicon.ico">
 </head>
 
 <body onload="overviewer.util.initialize()">
