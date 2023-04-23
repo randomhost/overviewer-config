@@ -124,7 +124,7 @@ def formatGeneralStats(key, value):
         'minecraft:walk_under_water_one_cm': formatDistance,
 
         # Time
-        'minecraft:play_one_minute': formatTime,
+        'minecraft:play_time': formatTime,
         'minecraft:sneak_time': formatTime,
 
         # Time ago
@@ -237,8 +237,12 @@ def loadPlayerStats(poi):
                 # general stats
                 if 'minecraft:custom' in decodedStats['stats']:
                     for key in decodedStats['stats']['minecraft:custom']:
-                        translationKey='stat.' + key.replace(':', '.')
-                        translation=decodedTranslations[translationKey]
+                        try:
+                            translationKey='stat.' + key.replace(':', '.')
+                            translation=decodedTranslations[translationKey]
+                        except KeyError:
+                            translationKey='stat.' + key.replace(':', '.')
+                            translation=translationKey
                         sortKey=translation + '_' + translationKey
 
                         stats['general']['actions'][sortKey] = {
@@ -287,8 +291,12 @@ def loadPlayerStats(poi):
                             translationKey='block.' + key.replace(':', '.')
                             translation=decodedTranslations[translationKey]
                         except KeyError:
-                            translationKey='item.' + key.replace(':', '.')
-                            translation=decodedTranslations[translationKey]
+                            try:
+                                translationKey='item.' + key.replace(':', '.')
+                                translation=decodedTranslations[translationKey]
+                            except KeyError:
+                                translationKey='item.' + key.replace(':', '.')
+                                translation=translationKey
                         sortKey=translation + '_' + translationKey
                         initItem(stats, sortKey, translation)
 
