@@ -1,11 +1,13 @@
 #!/bin/bash
 
 # config
-overviewerPath="/usr/bin/overviewer.py"
+overviewerPath="/usr/local/bin/overviewer.py"
 pidfile="/home/minecraft/overviewer.pid"
 configfile="/home/minecraft/config/overviewer/main.py"
 niceness=19
 initScriptPath="/home/minecraft/vanilla/minecraft-init/minecraft"
+worldStoragePath="/home/minecraft/vanilla/worldstorage"
+worldCachePath="/home/minecraft/cache/overviewer"
 
 # init vars
 pid="$$"
@@ -25,6 +27,38 @@ Options:
     -p Only updates POIs without rendering tiles.
     -f Force re-rendering of all tiles.
 EOF
+}
+
+print_status_message() {
+    echo -e "$(date +"%Y-%m-%d %H:%M:%S")  ${1}"
+}
+
+generate_pois() {
+    print_status_message "Generating POIs..."
+    nice -n ${niceness} ${overviewerPath} --config="${configfile}" --genpoi
+    print_status_message "Done."
+}
+
+sync_world_copy() {
+    print_status_message "Syncing world copy..."
+    if [[ -f ${initScriptPath} ]]; then
+        ${initScriptPath} say "§7Synchronisiere Welten für Online-Karte...§r"
+        ${initScriptPath} command save-off
+        ${initScriptPath} command save-all
+        sleep 10s
+    fi
+    rsync -r ${worldStoragePath} ${worldCachePath}
+    if [[ -f ${initScriptPath} ]]; then
+        ${initScriptPath} say "§7Synchronisation abgeschlossen.§r"
+        ${initScriptPath} command save-on
+    fi
+    print_status_message "Done."
+}
+
+generate_tiles() {
+    print_status_message "Updating world map..."
+    nice -n ${niceness} ${overviewerPath} --config="${configfile}" ${check} ${force}
+    print_status_message "Done."
 }
 
 run() {
@@ -60,26 +94,19 @@ run() {
     done
 
     if [[ -f ${pidfile} ]]; then
-        echo -e "$(date)\nOverviewer is still running \n
-        $( echo PID: $(cat ${pidfile})) exists from previous run\n
-        $(ps -p $(cat ${pidfile}) -o lstart,etime)\n" >&2
+        old_pid=$(cat ${pidfile})
+        print_status_message "Overviewer is still running" >&2
+        print_status_message "PID ${old_pid} exists from previous run" >&2
+        print_status_message "Process information:\n$(ps -p ${old_pid} -o lstart,etime)" >&2
         exit 1
     else
         echo ${pid} > ${pidfile}
 
-        nice -n ${niceness} ${overviewerPath} --config="${configfile}" --genpoi
+        generate_pois
 
         if [[ "${poionly}" = false ]]; then
-            if [[ -f ${initScriptPath} ]]; then
-                ${initScriptPath} save-off
-                sleep 5s
-                ${initScriptPath} say "§7Aktualisiere Online-Karte...§r"
-            fi
-            nice -n ${niceness} ${overviewerPath} --config="${configfile}" ${check} ${force}
-            if [[ -f ${initScriptPath} ]]; then
-                ${initScriptPath} say "§7Karte aktualisiert.§r"
-                ${initScriptPath} save-on
-            fi
+            sync_world_copy
+            generate_tiles
         fi
 
         rm ${pidfile}

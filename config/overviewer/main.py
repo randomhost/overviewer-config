@@ -35,7 +35,7 @@ from markers import *
 # Worlds
 ####################################################################################################
 
-worlds['Random World'] = '/home/minecraft/vanilla/randomhost'
+worlds['Random World'] = '/home/minecraft/cache/overviewer/worldstorage/randomhost'
 
 ####################################################################################################
 # Normal Renders
@@ -55,13 +55,6 @@ renders['randomhost_night'] = {
     'rendermode': [Base(), EdgeLines(), SmoothLighting(night=True, strength=0.9)],
 }
 
-# Cave
-renders['randomhost_cave'] = {
-    'world': 'Random World',
-    'title': 'Untergrund',
-    'rendermode': [Base(), EdgeLines(), Cave(only_lit=True)],
-}
-
 ####################################################################################################
 # Overlay Renders
 ####################################################################################################
@@ -78,13 +71,6 @@ renders['ramdomhost_biomeoverlay'] = {
     'title': 'Biome',
     'rendermode': [ClearBase(), BiomeOverlay()],
     'overlay': ['randomhost_day','randomhost_night']
-}
-
-renders['ramdomhost_depthoverlay'] = {
-    'world': 'Random World',
-    'title': 'Tiefe',
-    'rendermode': [Base(), EdgeLines(), Cave(only_lit=True), DepthTinting()],
-    'overlay': ['randomhost_cave']
 }
 
 ####################################################################################################
