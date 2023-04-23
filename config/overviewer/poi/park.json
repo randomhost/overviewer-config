@@ -1,15 +1,5 @@
 [
     {
-        "name": "Spawn Tempel",
-        "description": "Dies ist die heilige Stätte bei der neue Abenteurer diese Welt betreten. Man sagt sich dass uralte Technologie in diesem Tempel verborgen ist welche Abenteurer in einem einzigen Augenblick an weit entfernte Orte bringen kann.",
-        "screenshots": [
-            "spawn.jpg"
-        ],
-        "x": 389,
-        "y": 132,
-        "z": -265
-    },
-    {
         "name": "Random Park",
         "description": "Jemand muss eine Vorliebe für Pyramiden gehabt haben, denn dieser Park ist von einer großen Glas-Pyramide umschlossen. Die Spitze wurde in Anlehnung an die alten ägypthischen Pyramiden in goldener Farbe gestrichen. Es ist wirklich nur Farbe. Es ist nicht nötig herauf zu klettern und sich selbst davon zu überzeugen. Wir möchten nicht dass sich jemand verletzt.",
         "screenshots": [
@@ -38,6 +28,16 @@
         "x": -293,
         "y": 64,
         "z": -389
+    },
+    {
+        "name": "Random Pier",
+        "description": "Random Pier bietet einen herrlichen Ausblick auf das Meer welches die Hauptinsel von der neuen Welt trennt. Und wer bei der schönen Aussicht trotzdem noch dem ausufernden Kapitalismus frönen möchte, findet hier auch ein kleines Geschäft.",
+        "screenshots": [
+            "random-pier.jpg"
+        ],
+        "x": -342,
+        "y": 67,
+        "z": -362
     },
     {
         "name": "Kleiner Teich",

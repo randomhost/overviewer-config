@@ -1,5 +1,15 @@
 [
     {
+        "name": "Spawn Tempel",
+        "description": "Dies ist die heilige Stätte bei der neue Abenteurer diese Welt betreten. Man sagt sich dass uralte Technologie in diesem Tempel verborgen ist welche Abenteurer in einem einzigen Augenblick an weit entfernte Orte bringen kann.",
+        "screenshots": [
+            "spawn.jpg"
+        ],
+        "x": 389,
+        "y": 132,
+        "z": -265
+    },
+    {
         "name": "Bibliothek",
         "description": "Bücher wurden vor der Erfindung von eBook-Readern benutzt um Wissen zu transferieren. Eine Bibliothek ist im Wesentlichen ein Aufbewahrungsraum für Bücher da es sich bei Büchern um physische Gegenstände handelt welche derzeit nicht auf einer Speicherkarte abgelegt werden können.",
         "screenshots": [
@@ -136,5 +146,16 @@
         "x": -14,
         "y": 70,
         "z": -164
+    },
+    {
+        "name": "Kirche",
+        "description": "In Zeiten in denen die Menschen klug genug sein sollten um nicht mehr an Mythen und Märchen zu glauben, erinnert dieses Bauwerk an die grenzenlose Dekadenz und Arroganz religiöser Institutionen in hoffentlich bald vergangenen Zeiten.",
+        "screenshots": [
+            "kirche-1.jpg",
+            "kirche-2.jpg"
+        ],
+        "x": 156,
+        "y": 69,
+        "z": 118
     }
 ]
