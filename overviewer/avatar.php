@@ -17,63 +17,64 @@ use RuntimeException;
  * @see       http://docs.overviewer.org/en/latest/signs/#special-pois
  *
  * @author    Ch'Ih-Yu <chi-yu@web.de>
- * @copyright 2020 Random-Host.tv
+ * @copyright 2023 Random-Host.tv
  * @license   https://opensource.org/licenses/BSD-3-Clause BSD License (3 Clause)
- * @link      https://random-host.tv
+ *
+ * @see      https://random-host.tv
  */
 class Avatar
 {
     /**
      * Default Minecraft player skin URL.
      */
-    const DEFAULT_PLAYER_SKIN_URL = 'http://assets.mojang.com/SkinTemplates/steve.png';
+    private const DEFAULT_PLAYER_SKIN_URL = 'https://assets.mojang.com/SkinTemplates/steve.png';
 
     /**
      * Renders a full front view of the player's body.
      */
-    const TYPE_BODY = 'body';
+    private const TYPE_BODY = 'body';
 
     /**
      * Renders a 16x16 pixel front view of the player's head.
      */
-    const TYPE_HEAD = 'head';
+    private const TYPE_HEAD = 'head';
 
     /**
      * Renders a 64x64 pixel front view of the player's head.
      */
-    const TYPE_HEAD_BIG = 'bighead';
+    private const TYPE_HEAD_BIG = 'bighead';
 
     /**
      * Valid avatar types.
      */
-    const VALID_TYPES = [self::TYPE_BODY, self::TYPE_HEAD, self::TYPE_HEAD_BIG];
+    private const VALID_TYPES = [self::TYPE_BODY, self::TYPE_HEAD, self::TYPE_HEAD_BIG];
 
     /**
      * Directory for caching player skin textures.
      */
-    const TEXTURE_CACHE_DIR = __DIR__.'/../.avatar_cache';
+    private const TEXTURE_CACHE_DIR = __DIR__.'/../.avatar_cache';
 
     /**
      * Number of seconds player skin textures should be cached.
      */
-    const TEXTURE_CACHE_TIME = 3600;
+    private const TEXTURE_CACHE_TIME = 3600;
 
     /**
      * Number of seconds player skin data (except textures) should be cached.
      */
-    const DATA_CACHE_TIME = 3600;
+    private const DATA_CACHE_TIME = 3600;
 
     /**
      * Memcached instance.
      *
-     * @var Memcached|null
+     * @var null|Memcached
      */
     private $memcached;
 
     /**
      * Avatar constructor.
      *
-     * @param Memcached|null $memcached Optional: Memcached instance.
+     * @param null|Memcached $memcached Optional: Memcached instance.
      */
     public function __construct(Memcached $memcached = null)
     {
@@ -109,16 +110,16 @@ class Avatar
             }
 
             $this->getAvatar($type, $_REQUEST['player']);
+
             exit(0);
-        } catch (BadMethodCallException $e) {
+        } catch (BadMethodCallException|OutOfBoundsException $e) {
             http_response_code(400);
-            exit(1);
-        } catch (OutOfBoundsException $e) {
-            http_response_code(400);
+
             exit(1);
         } catch (Exception $e) {
             http_response_code(503);
             trigger_error($e->getMessage(), E_USER_WARNING);
+
             exit(1);
         }
     }
@@ -133,16 +134,23 @@ class Avatar
     {
         try {
             $skinData = $this->getFromMinecraft($playerName);
+
             switch ($type) {
                 case self::TYPE_BODY:
                     $avatar = $this->createAvatarFromTexture($skinData['skin'], $skinData['alpha'], $skinData['slim']);
+
                     break;
+
                 case self::TYPE_HEAD:
                     $avatar = $this->createHeadFromTextureWithSize($skinData['skin'], $skinData['alpha'], 16, 16);
+
                     break;
+
                 case self::TYPE_HEAD_BIG:
                     $avatar = $this->createHeadFromTextureWithSize($skinData['skin'], $skinData['alpha'], 64, 64);
+
                     break;
+
                 default:
                     throw new OutOfBoundsException('Avatar type not implemented');
             }
@@ -152,16 +160,15 @@ class Avatar
             imagedestroy($avatar);
         } catch (Exception $e) {
             http_response_code(503);
+
             exit(1);
         }
     }
 
     /**
-     * Returns a skin resource and skin meta data for the given player name.
+     * Returns a skin resource and skin metadata for the given player name.
      *
      * @param string $playerName Minecraft player name.
-     *
-     * @return array
      *
      * @throws Exception
      */
@@ -203,8 +210,6 @@ class Avatar
      *
      * @param string $playerName Minecraft player name.
      *
-     * @return string
-     *
      * @throws Exception
      */
     private function getUuid(string $playerName): string
@@ -223,7 +228,7 @@ class Avatar
         if (false !== $response) {
             $data = json_decode($response, true);
             if (!is_null($data)) {
-                $this->writeToCache(__METHOD__, $playerName, $data['id'], self::DATA_CACHE_TIME);
+                $this->writeToCache(__METHOD__, $playerName, $data['id']);
 
                 return $data['id'];
             }
@@ -236,8 +241,6 @@ class Avatar
      * Returns skin data for the given player UUID.
      *
      * @param string $uuid Player UUID.
-     *
-     * @return array
      *
      * @throws Exception
      */
@@ -263,7 +266,7 @@ class Avatar
         $textures = array_filter(
             $properties,
             function ($obj) {
-                return $obj['name'] == 'textures';
+                return 'textures' == $obj['name'];
             }
         );
 
@@ -272,16 +275,16 @@ class Avatar
         $textures = json_decode($textures, true);
 
         if (!array_key_exists('SKIN', $textures['textures'])) {
-            throw new RuntimeException('Given UUID doesn\'t use a custom skin');
+            throw new RuntimeException("Given UUID doesn't use a custom skin");
         }
 
-        $skinData['url'] = $textures["textures"]['SKIN']['url'];
+        $skinData['url'] = $textures['textures']['SKIN']['url'];
 
         if (array_key_exists('metadata', $textures['textures']['SKIN'])) {
-            $skinData['slim'] = ($textures['textures']['SKIN']['metadata']['model'] == 'slim');
+            $skinData['slim'] = ('slim' == $textures['textures']['SKIN']['metadata']['model']);
         }
 
-        $this->writeToCache(__METHOD__, $uuid, $skinData, self::DATA_CACHE_TIME);
+        $this->writeToCache(__METHOD__, $uuid, $skinData);
 
         return $skinData;
     }
@@ -302,7 +305,7 @@ class Avatar
      *
      * @throws Exception
      */
-    private function paste($dst, $src, $dstX, $dstY, $srcX, $srcY, $srcWidth, $srcHeight)
+    private function paste($dst, $src, int $dstX, int $dstY, int $srcX, int $srcY, int $srcWidth, int $srcHeight)
     {
         if (false === imagecopy($dst, $src, $dstX, $dstY, $srcX, $srcY, $srcWidth, $srcHeight)) {
             throw new RuntimeException('Failed to copy texture');
@@ -319,7 +322,6 @@ class Avatar
      * @param bool     $slim     Whether the texture uses the slim player model.
      *
      * @return false|resource
-     *
      */
     private function createAvatarFromTexture($texture, bool $hasAlpha, bool $slim)
     {
@@ -371,20 +373,21 @@ class Avatar
                         ]
                     );
                 }
+
                 break;
-            /*
-             * Post Minecraft 1.8 "modern" skin with slim player model:
-             *  - head
-             *  - head armor
-             *  - body
-             *  - body armor
-             *  - right leg
-             *  - right leg armor
-             *  - left arm (3px wide)
-             *  - left arm armor (3px wide)
-             *  - right arm (3px wide)
-             *  - right arm armor (3px wide)
-             */
+                /*
+                 * Post Minecraft 1.8 "modern" skin with slim player model:
+                 *  - head
+                 *  - head armor
+                 *  - body
+                 *  - body armor
+                 *  - right leg
+                 *  - right leg armor
+                 *  - left arm (3px wide)
+                 *  - left arm armor (3px wide)
+                 *  - right arm (3px wide)
+                 *  - right arm armor (3px wide)
+                 */
             case $slim:
                 $pastes = [
                     // body layer
@@ -409,20 +412,21 @@ class Avatar
                         ]
                     );
                 }
+
                 break;
-            /*
-             * Post Minecraft 1.8 "modern" skin with normal player model:
-             *  - head
-             *  - head armor
-             *  - body
-             *  - body armor
-             *  - right leg
-             *  - right leg armor
-             *  - left arm (4px wide)
-             *  - left arm armor (4px wide)
-             *  - right arm (4px wide)
-             *  - right arm armor (4px wide)
-             */
+                /*
+                 * Post Minecraft 1.8 "modern" skin with normal player model:
+                 *  - head
+                 *  - head armor
+                 *  - body
+                 *  - body armor
+                 *  - right leg
+                 *  - right leg armor
+                 *  - left arm (4px wide)
+                 *  - left arm armor (4px wide)
+                 *  - right arm (4px wide)
+                 *  - right arm armor (4px wide)
+                 */
             default:
                 $pastes = [
                     // body layer
@@ -447,6 +451,7 @@ class Avatar
                         ]
                     );
                 }
+
                 break;
         }
 
@@ -471,7 +476,6 @@ class Avatar
      * @param int      $height   Head size.
      *
      * @return false|resource
-     *
      */
     private function createHeadFromTextureWithSize($texture, bool $hasAlpha, int $width, int $height)
     {
@@ -500,7 +504,7 @@ class Avatar
      * @param string $method Caller method name.
      * @param string $key    Memcached key.
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     private function readFromCache(string $method, string $key)
     {
@@ -524,9 +528,8 @@ class Avatar
      * @param string $method Caller method name.
      * @param string $key    Memcached key.
      * @param mixed  $value  Memcached value.
-     * @param int    $ttl    Memcached TTL.
      */
-    private function writeToCache(string $method, string $key, $value, int $ttl)
+    private function writeToCache(string $method, string $key, $value)
     {
         if (is_null($this->memcached)) {
             return;
@@ -534,7 +537,7 @@ class Avatar
 
         $fullKey = __CLASS__.'-'.$method.'-'.$key;
 
-        $this->memcached->set($fullKey, $value, $ttl);
+        $this->memcached->set($fullKey, $value, self::DATA_CACHE_TIME);
     }
 }
 
