@@ -66,13 +66,6 @@ renders['ramdomhost_spawnoverlay'] = {
     'overlay': ['randomhost_day','randomhost_night']
 }
 
-renders['ramdomhost_biomeoverlay'] = {
-    'world': 'Random World',
-    'title': 'Biome',
-    'rendermode': [ClearBase(), BiomeOverlay()],
-    'overlay': ['randomhost_day','randomhost_night']
-}
-
 ####################################################################################################
 # Observers
 ####################################################################################################
